@@ -1,0 +1,10 @@
+Rebuilt observed-market lock-in persistence
+==========================================
+weight_file = D:\cilck here\2代目\experiments\weight_concentration_minute_level.csv
+panel_file = D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv
+DV_DIR = D:\cilck here\2代目\dv_ready_2021_2022
+valid_minutes = 1050207
+A_share = 0.554973
+B_share = 0.554973
+C_share = 0.554973
+dominant_mismatch_rate = 0.0

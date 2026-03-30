@@ -1,0 +1,16 @@
+VWAP head proximity vs concentration
+ROOT=D:\cilck here\2代目
+PANEL_FILE=D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv
+AGG_FILE=D:\cilck here\2代目\agg_ready\btc_2021_2022_agg_prices.csv
+DV_DIR=D:\cilck here\2代目\dv_ready_2021_2022
+EXCHANGES=['Binance', 'Bitfinex', 'BitMEX', 'Bitstamp', 'Coinbase', 'KuCoin', 'OKX']
+EDGES_SOURCE=existing:pivot_boundary_curve_edges_maxshare.csv
+NBINS=30
+MIN_N_PER_BIN=500
+Q_LEVEL=0.95
+BOOTSTRAP_B=500
+BOOTSTRAP_CI=(0.025, 0.975)
+MAX_N_FOR_BOOTSTRAP=20000
+RANDOM_SEED=42
+N_FINAL=1050207
+Elapsed_sec=19.19

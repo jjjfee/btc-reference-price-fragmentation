@@ -1,0 +1,14 @@
+LWMP single-gamma main-text boundary figure
+INPUT_FILE=D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_bins_maxshare.csv
+TARGET_SHOCK_TYPE=inflate_only
+TARGET_GAMMA=1.0
+x_col=max_share_mid
+y_col=pivot_rate
+ci_low_col=ci_lo
+ci_high_col=ci_hi
+shock_col=shock_type
+gamma_col=gamma
+n_col=n
+k_col=k
+N_ROWS_PLOTTED=30
+Elapsed_sec=0.37

@@ -1,0 +1,11 @@
+VWAP head alignment (rising mirror from existing bins)
+INPUT_BINS=D:\cilck here\2代目\experiments_structure_vwap\vwap_head_proximity_bins_maxshare.csv
+Transformation:
+  gap_t = |P_vwap_DV - p_dom| / P_vwap_DV
+  alignment_t = 1 - gap_t
+  q05_alignment = 1 - q95_rel_gap_dom
+  alignment_ci_low = 1 - old_ci_high
+  alignment_ci_high = 1 - old_ci_low
+Scale shown in figure: percent
+N_ROWS=30
+Elapsed_sec=0.02

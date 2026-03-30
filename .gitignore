@@ -1,0 +1,80 @@
+# -------------------------
+# OS / system files
+# -------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------------
+# Python cache / env
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.python-version
+.venv/
+venv/
+env/
+ENV/
+
+# -------------------------
+# Jupyter / notebook
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Testing / coverage / type check
+# -------------------------
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# -------------------------
+# IDE / editor
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# Logs / temp
+# -------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# -------------------------
+# Local export files
+# -------------------------
+*.zip
+*.7z
+
+# -------------------------
+# Excel / Word temp files
+# -------------------------
+~$*.xlsx
+~$*.xls
+~$*.docx
+~$*.doc
+
+# -------------------------
+# Large raw / intermediate data
+# DO NOT commit these into the main repo
+# -------------------------
+dv_ready/
+dv_ready_2021_2022/
+agg_ready/
+hhi_panel/
+experiments/
+experiments_cap/
+experiments_dvonly/
+paper_outputs_frl/

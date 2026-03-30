@@ -1,0 +1,16 @@
+EVENT=D:\cilck here\2代目\experiments_dvonly\dvon_injection_shift_samples.csv
+PANEL=D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv
+OUT_BINS=D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_bins_maxshare.csv
+OUT_EDGES=D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_edges_maxshare.csv
+NBINS_TARGET=30
+NBINS_ACTUAL=30
+Z=1.96
+MIN_N_PER_BIN=0
+time_col_panel=time_utc_dt
+gamma_col_event=delta_w
+ev_rows_raw=800000
+ev_rows_after_time_parse=800000
+pn_rows_after_parse=1050207
+df_rows_after_merge=800000
+merge_rate_vs_ev=1.0
+shock_types=['inflate_only', 'reallocate_total_fixed']
