@@ -1,97 +1,170 @@
-# When does a formally multi-venue benchmark cease to represent fragmented market conditions?
-## Evidence from fragmented BTCUSD markets
+# When Multi-Venue Benchmarks Become Effectively Concentrated
+
+## Evidence from Fragmented BTCUSD Markets
 
 This repository accompanies the paper:
 
-**When does a formally multi-venue benchmark cease to represent fragmented market conditions? Evidence from fragmented BTCUSD markets**
+**When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets**
 
-本仓库对应论文 **When does a formally multi-venue benchmark cease to represent fragmented market conditions? Evidence from fragmented BTCUSD markets**，用于整理论文相关的代码、图表、表格、运行信息，以及未直接纳入 GitHub 主仓库的大文件说明。
-
----
-
-## Repository purpose / 仓库用途
-
-This repository is a structured companion archive for the paper. It is designed to make the empirical workflow, output provenance, and replication logic transparent, while keeping very large intermediate datasets outside the main GitHub repository.
-
-本仓库是论文的结构化配套仓库，目标是：
-
-- 整理用于数据构建、实验、审计和绘图的源代码
-- 对应主文与附录中实际使用的图表和表格
-- 保留关键输出的运行信息与诊断材料
-- 用 manifest 文件说明未直接纳入主仓库的大型原始/中间数据文件
+本仓库是该论文的复现与输出归档仓库。它用于整理论文相关代码、主文与附录输出、运行说明、诊断材料和外部数据说明。大型原始数据与大型中间文件不直接纳入本仓库。
 
 ---
 
-## Paper focus / 论文主线
+## 1. Paper focus
 
-The paper studies when a formally multi-venue benchmark may cease to represent fragmented market conditions as concentration rises in BTCUSD markets.
+The paper studies effective concentration in formally multi-venue BTCUSD benchmarks. A benchmark may include several venues in its input set while its realized exposure becomes concentrated when trading weights are concentrated.
 
-The central argument is not a universal ranking of aggregation rules. Instead, the paper asks whether a formally multi-venue benchmark still represents fragmented market conditions when market concentration rises.
+The paper separates three objects:
 
-The main contrast is:
+1. **Venue coverage**: the exchanges included in the benchmark input set.
+2. **Cross-venue price-weight state**: the observed venue-level prices and trading weights at each minute.
+3. **Reference price**: the output produced by an aggregation rule.
 
-- **LWMP**: boundary-centered transition into pivot lock-in
-- **VWAP**: continuous narrowing toward the dominant-exchange price
+The main claim is that trading concentration changes how a benchmark rule maps the cross-venue state into a reference price, even when the nominal venue set is unchanged.
 
-The DV-only design is used to isolate the pure reweighting channel rather than the total effect of all market dynamics.
+The empirical application uses minute-level BTCUSD data from seven exchanges over 2021-2022. The analysis focuses on two rule-specific mechanisms:
 
-本文的核心问题不是对聚合器做一个普遍优劣排序，而是考察：当市场集中度上升时，一个**形式上跨交易所**的 benchmark，是否仍然能够代表**碎片化市场条件**。
+- **VWAP**: continuous dominant-venue exposure. As the dominant venue's weight rises, the residual cross-venue component of VWAP becomes less influential.
+- **LWMP**: threshold-pivot lock-in. Once a single venue carries more than half of total weight, it becomes the weighted-median pivot.
 
-当前主文中的主要机制对照为：
-
-- **LWMP**：boundary-centered transition into pivot lock-in
-- **VWAP**：continuous narrowing toward the dominant-exchange price
-
-其中 DV-only 设计用于隔离 **pure reweighting channel**，而不是识别所有市场动态的总效应。
+The design is a benchmark-mapping exercise. It does not estimate the full market-equilibrium effect of concentration. It holds observed venue prices fixed where appropriate and studies how aggregation rules convert observed prices and weights into benchmark outputs.
 
 ---
 
-## Current manuscript structure / 当前论文结构
+## 2. Data scope and convention
 
-### Main text / 主文
+The raw data are obtained from the public Kaggle dataset:
+
+**Comprehensive BTCUSD 1m Data**  
+https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data
+
+The raw Kaggle files are not redistributed in this repository. Users should obtain the raw files directly from Kaggle and then use the scripts and manifests in this repository to reproduce the processed panel and paper outputs.
+
+The analysis uses synchronized BTCUSD price-volume inputs from:
+
+- Binance
+- Bitfinex
+- BitMEX
+- Bitstamp
+- Coinbase
+- KuCoin
+- OKX
+
+Because public OHLCV files differ in product conventions and volume units across venues, the synchronized inputs are treated as BTCUSD price-volume proxies for benchmark-mapping purposes. BitMEX is retained after volume-unit diagnostics and handled under the quote-or-contract dollar-volume convention rather than as a base-volume spot venue. The study is therefore a harmonized aggregation-rule exercise, not the construction of a regulated investable index.
+
+All reported timestamps are handled in UTC.
+
+---
+
+## 3. Manuscript output map
+
+### Main text
+
 The current main text relies primarily on:
 
-- **Figure 1**: LWMP main result
-- **Figure 2**: VWAP main result
-- **Table 1**: Observed-market persistence of the over-half state (LWMP lock-in state)
+- **Table 1**: observed-market persistence of the over-half state.
+- **LWMP evidence**: one-half boundary and pivot lock-in.
+- **VWAP evidence**: supplementary perturbation-tail diagnostics consistent with continuous dominant-venue exposure.
+- **Settlement implication**: fixed-weight dominant-venue price-displacement pass-through.
 
-### Appendix / 附录
-The appendix is currently organized as:
+### Appendix
 
-- **A**: Definition / Measurement and Threshold Robustness
-- **B**: Subsample Robustness
-- **C**: Structural-Exclusion Robustness
-- **D**: LWMP Audit / Mechanism-Consistency Checks
-- **E**: Supplementary VWAP Evidence
-- **F**: Observed-Market Persistence of LWMP Lock-In
+The appendix is organized as:
+
+- **Appendix A**: definition, measurement, and threshold validation.
+- **Appendix B**: year-based subsample validation.
+- **Appendix C**: structural-exclusion validation.
+- **Appendix D**: LWMP mechanism audit.
+- **Appendix E**: supplementary VWAP evidence.
+- **Appendix F**: observed-state validation of LWMP lock-in.
+- **Appendix G**: settlement-use-case fixed-weight price-displacement audit.
 
 ---
 
-## Repository structure / 仓库结构
+## 4. Repository structure
 
 ```text
 btc-reference-price-fragmentation/
 ├─ src/
-│  ├─ build/
-│  ├─ experiments/
-│  ├─ audit/
-│  └─ plotting/
-├─ scripts/
+│  ├─ build/          # data construction and panel-building scripts
+│  ├─ experiments/    # benchmark perturbation and robustness scripts
+│  ├─ audit/          # mechanism audits and validation checks
+│  └─ plotting/       # paper figure/table generation scripts
+├─ scripts/           # execution helpers and final-run scripts
 ├─ outputs/
-│  ├─ main_text/
-│  │  ├─ figures/
-│  │  └─ tables/
-│  ├─ appendix/
-│  │  ├─ figures/
-│  │  └─ tables/
-│  └─ metadata/
+│  ├─ main_text/      # figures and tables used in the main text
+│  ├─ appendix/       # appendix figures and tables
+│  └─ metadata/       # output metadata and provenance notes
 ├─ docs/
-│  ├─ runinfo/
-│  └─ diagnostics/
+│  ├─ runinfo/        # run logs and configuration notes
+│  └─ diagnostics/    # diagnostic summaries
 ├─ data/
 │  └─ external/
-│     └─ manifests/
-└─ archive/
-   ├─ exploratory/
-   ├─ duplicates/
-   └─ tests/
+│     └─ manifests/   # source-data manifests; raw data are not redistributed
+└─ archive/           # exploratory, duplicate, or deprecated scripts
+```
+
+Files under `archive/` are retained for transparency and development history. They are not part of the final replication path unless explicitly referenced by a run note.
+
+---
+
+## 5. Python environment
+
+Install the minimal Python dependencies from:
+
+```bash
+pip install -r requirements.txt
+```
+
+The expected core dependencies are:
+
+```text
+numpy
+pandas
+matplotlib
+openpyxl
+scipy
+mpmath
+tqdm
+numba
+```
+
+`openpyxl` is required for Excel input/output through pandas, even when it is not explicitly imported in individual scripts.
+
+---
+
+## 6. Reproduction logic
+
+The full workflow has four stages:
+
+1. **Prepare venue-level inputs**  
+   Harmonize exchange-level BTCUSD minute data and construct dollar-volume proxies.
+
+2. **Build benchmark panels**  
+   Construct VWAP, LWMP, concentration measures, dominant-venue shares, and related panel variables.
+
+3. **Run mechanism and validation audits**  
+   Execute the dollar-volume-only perturbation exercises, observed-state validation, structural-exclusion checks, and settlement pass-through audit.
+
+4. **Generate paper outputs**  
+   Create the tables and figures used in the main text and appendix.
+
+Large processed files are not stored directly in this repository. The manifests and run notes describe how those files are generated and where they enter the workflow.
+
+---
+
+## 7. Data and output policy
+
+- Raw Kaggle files are not redistributed.
+- Large intermediate files are excluded from the repository.
+- Selected final tables, figures, metadata, and run notes are retained for transparency.
+- Source-data manifests document the external data inputs and access information.
+- The code is intended to support replication of the paper's benchmark-mapping results, not to provide production benchmark infrastructure.
+
+---
+
+## 8. License and citation
+
+The code in this repository is released under the MIT License. See `LICENSE`.
+
+Citation metadata are provided in `CITATION.cff`. If you use this repository, cite the accompanying paper and this code archive.
