@@ -1,25 +1,28 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite it using the metadata below."
-title: "btc-reference-price-fragmentation"
+title: "Replication materials for: When Multi-Venue Benchmarks Become Effectively Concentrated"
 type: software
 authors:
-  - family-names: "jin"
-    given-names: "junjie"
+  - family-names: "Jin"
+    given-names: "Junjie"
 repository-code: "https://github.com/jjjfee/btc-reference-price-fragmentation"
 abstract: >
-  Repository accompanying the paper
-  "When does a formally multi-venue benchmark cease to represent fragmented
-  market conditions? Evidence from fragmented BTCUSD markets".
-  The repository contains code, curated outputs, run information, and
-  manifest-based documentation for large external data objects.
+  Replication materials accompanying the paper "When Multi-Venue Benchmarks
+  Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets".
+  The repository contains code, selected paper outputs, run information,
+  diagnostics, source-data manifests, and reproduction notes for a benchmark-
+  mapping analysis of VWAP and LWMP in fragmented BTCUSD markets.
 keywords:
   - BTCUSD
   - benchmark design
+  - benchmark representativeness
+  - effective concentration
   - fragmented markets
   - market concentration
-  - LWMP
   - VWAP
+  - LWMP
+  - weighted median
   - reference price
 license: "MIT"
-version: "0.1.0"
-date-released: 2026-03-30
+version: "0.2.0"
+date-released: 2026-05-21
