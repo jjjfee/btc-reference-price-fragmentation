@@ -133,7 +133,17 @@ numba
 
 ---
 
-## 6. Reproduction logic
+## 6. Local path configuration
+
+Some scripts were originally run from a local Windows project directory and may contain default absolute paths such as `D:\cilck here\...`. External users should replace these default paths with their own local raw-data and project-output paths before running the workflow.
+
+Where a script provides command-line arguments such as `--root`, `--data-dir`, or `--out-dir`, those arguments can be used instead of editing the script directly. For scripts without command-line path arguments, users should adjust the path block near the top of the script before execution.
+
+In practice, users should first download the Kaggle CSV files to their chosen raw-data directory, then set the script input and output paths so that the generated processed files are written to the corresponding local project directory.
+
+---
+
+## 7. Reproduction logic
 
 The full workflow has four stages:
 
@@ -153,7 +163,7 @@ Large processed files are not stored directly in this repository. The manifests 
 
 ---
 
-## 7. Data and output policy
+## 8. Data and output policy
 
 - Raw Kaggle files are not redistributed.
 - Large intermediate files are excluded from the repository.
@@ -163,7 +173,7 @@ Large processed files are not stored directly in this repository. The manifests 
 
 ---
 
-## 8. License and citation
+## 9. License and citation
 
 The code in this repository is released under the MIT License. See `LICENSE`.
 
