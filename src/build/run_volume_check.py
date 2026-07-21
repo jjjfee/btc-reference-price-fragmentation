@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 # =========================
 # 你只需要改这两行（一般不用改）
 # =========================
-INPUT_DIR = Path(r"D:\cilck here\btc交易所数据")
-OUTPUT_DIR = Path(r"D:\cilck here\2代目")
+INPUT_DIR = (Path(__file__).resolve().parents[2] / "data" / "external" / "raw" / "btc")
+OUTPUT_DIR = Path(__file__).resolve().parents[2]
 
 # 每次处理多少行（防止一次性占用太多内存）
 CHUNK_SIZE = 200_000

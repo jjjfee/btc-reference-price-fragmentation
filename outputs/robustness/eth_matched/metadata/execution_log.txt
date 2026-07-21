@@ -1,0 +1,11 @@
+[2026-07-12 19:14:31] Auditing ETH raw files
+[2026-07-12 19:16:09] Building ETH matched-sample price and dollar-volume wide tables
+[2026-07-12 19:17:24] Computing ETH VWAP, LWMP, max_share, HHI, dominant venue and pivot
+[2026-07-12 19:19:58] Running ETH DV-only perturbation events
+[2026-07-12 19:20:02] Running ETH UTC block bootstrap
+[2026-07-12 19:20:03] Computing ETH VWAP proximity and fixed-weight pass-through
+[2026-07-12 19:20:16] Running targeted exclusion checks where required
+[2026-07-12 19:20:52] Writing result tables
+[2026-07-12 19:20:52] Rendering ETH figures
+[2026-07-12 19:20:53] Building BTC-ETH comparison table
+[2026-07-12 19:22:28] ETH replication run complete

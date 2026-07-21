@@ -172,9 +172,9 @@ def plot_share_lockin(df: pd.DataFrame, metric: str, thresholds: list[float], ou
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", default=r"D:\cilck here\2代目\experiments_dvonly\audit_lockin\dvonly_inference_dataset.csv",
+    ap.add_argument("--data", default=str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/audit_lockin/dvonly_inference_dataset.csv")),
                     help="inference dataset or merged_for_audit csv")
-    ap.add_argument("--outdir", default=r"D:\cilck here\2代目\experiments_dvonly\audit_lockin\threshold_robustness")
+    ap.add_argument("--outdir", default=str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/audit_lockin/threshold_robustness")))
     ap.add_argument("--metric", default="max_share", choices=["max_share", "HHI_roll", "HHI"])
     ap.add_argument("--thresholds", default="linspace:0.45:0.60:9",
                     help='e.g. "0.45,0.5,0.55" or "linspace:0.45:0.60:9" or "arange:0.45:0.61:0.02"')

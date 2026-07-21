@@ -1,0 +1,7 @@
+exchange,raw_file,price_rule,price_fields_used,volume_field_used,volume_convention,multiplier,dv_formula,rows_raw_file,rows_in_sample_before_dedup,duplicate_timestamps_in_sample,time_parse_failures_raw,invalid_price_rows_in_sample,invalid_weight_rows_in_sample,dedup_minutes_in_sample,valid_minutes_after_main_rule
+BitMEX,ETHUSD_1m_BitMEX.csv,OHLC4,"Open,High,Low,Close",Volume,quote_or_contract,1.0,DV = Volume * 1.0,3782996,1051200,0,0,0,23136,1051200,1028064
+Bitfinex,ETHUSD_1m_Bitfinex.csv,OHLC4,"Open,High,Low,Close",Volume,base,1.0,DV = Volume * venue_price,3817215,1042312,0,0,0,0,1042312,1042312
+Bitstamp,ETHUSD_1m_Bitstamp.csv,OHLC4,"Open,High,Low,Close",Volume,base,1.0,DV = Volume * venue_price,4287978,1051200,0,0,0,83139,1051200,968061
+Coinbase,ETHUSD_1m_Coinbase.csv,OHLC4,"Open,High,Low,Close",Volume,base,1.0,DV = Volume * venue_price,4633225,1051070,0,0,0,0,1051070,1051070
+KuCoin,ETHUSD_1m_KuCoin.csv,OHLC4,"Open,High,Low,Close",Volume,base,1.0,DV = Volume * venue_price,3827937,1051200,0,0,0,1182,1051200,1050018
+OKX,ETHUSD_1m_OKX.csv,OHLC4,"Open,High,Low,Close",Volume,base,1.0,DV = Volume * venue_price,4075196,1051200,0,0,0,1870,1051200,1049330

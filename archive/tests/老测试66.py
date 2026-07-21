@@ -1,6 +1,6 @@
 import pandas as pd
 
-fp = r"D:\cilck here\2代目\experiments_dvonly\exclude_binance\dvon_injection_shift_samples.csv"
+fp = str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/exclude_binance/dvon_injection_shift_samples.csv"))
 df = pd.read_csv(fp)
 
 # 1) Binance 不应出现

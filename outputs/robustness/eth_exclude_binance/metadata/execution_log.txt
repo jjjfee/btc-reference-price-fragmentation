@@ -1,0 +1,10 @@
+[2026-07-12 19:52:37] Auditing six ETH raw files; Binance and Combined_Index are not admitted
+[2026-07-12 19:53:43] Writing six-venue audit outputs
+[2026-07-12 19:53:43] Building six-venue ETH price and dollar-volume panels from raw CSVs
+[2026-07-12 19:54:34] Computing six-venue VWAP, LWMP, dominant venue, max_share and HHI
+[2026-07-12 19:56:42] Generating six-venue DV-only perturbation events
+[2026-07-12 19:56:47] Running UTC 1-day and 7-day block bootstrap
+[2026-07-12 19:56:48] Computing VWAP proximity and fixed-weight dominant-price pass-through
+[2026-07-12 19:57:00] Writing six-venue result tables and figures
+[2026-07-12 19:57:01] Building direct comparison and updating targeted exclusion summary
+[2026-07-12 19:57:24] ETH exclude-Binance run complete

@@ -1,0 +1,10 @@
+{
+  "script": "<PROJECT_ROOT>\\run_eth_replication.py",
+  "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "root": "<PROJECT_ROOT>",
+  "raw_dir": "data\\external\\raw\\eth",
+  "out_dir": "<PROJECT_ROOT>\\paper_outputs_el\\replication_eth",
+  "elapsed_seconds": 450.7609193325043,
+  "status": "complete"
+}

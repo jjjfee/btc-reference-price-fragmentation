@@ -1,0 +1,8 @@
+exchange,raw_file,rows_raw_file,rows_in_window_before_dedup,duplicate_timestamps_in_window,time_parse_failures_raw,invalid_price_rows_in_window,invalid_weight_rows_in_window,dedup_minutes_in_window,valid_minutes_after_main_rule,price_scale_to_anchor_reused,anchor_usd_multiplier_reused,volume_unit_reused
+Binance,BTCUSD_1m_Binance.csv,4278671,1460743,0,0,0,73,1460743,1460670,1.0,1.0,base
+Bitfinex,BTCUSD_1m_Bitfinex.csv,5391322,1250436,0,0,0,0,1250436,1250436,0.9994239126662008,1.0,base
+BitMEX,BTCUSD_1m_BitMEX.csv,5283245,1460823,0,0,0,55833,1460823,1404990,0.9991009156900894,1.0,quote_or_contract
+Bitstamp,BTCUSD_1m_Bitstamp.csv,7441823,1460820,0,0,0,44071,1460820,1416749,0.9990791196932554,1.0,base
+Coinbase,BTCUSD_1m_Coinbase.csv,5317710,1460311,0,0,0,0,1460311,1460311,0.9993325641475671,1.0,base
+KuCoin,BTCUSD_1m_KuCoin.csv,3908950,1460811,0,0,0,187,1460811,1460624,0.9999972339486433,1.0,base
+OKX,BTCUSD_1m_OKX.csv,4075191,1460823,0,0,0,69,1460823,1460754,0.9999977713145916,1.0,base

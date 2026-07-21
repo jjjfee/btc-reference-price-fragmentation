@@ -1,0 +1,12 @@
+[2026-07-11 15:40:01] Reading 2021-2022 calibration workbook
+[2026-07-11 15:40:02] Auditing raw BTC exchange files
+[2026-07-11 15:41:41] Building post-2022 price and weight wide tables under reused calibration
+[2026-07-11 15:43:07] Computing VWAP, LWMP, shares, max_share, HHI, dominant venue and pivot
+[2026-07-11 15:44:41] Running DV-only perturbation events for LWMP pivot boundary and headline contrast
+[2026-07-11 15:44:45] Running UTC block bootstrap for 1-day and 7-day blocks
+[2026-07-11 15:44:46] Computing VWAP dominant-price proximity bins
+[2026-07-11 15:44:54] Running fixed-weight dominant-price pass-through
+[2026-07-11 15:44:59] Rendering figures
+[2026-07-11 15:45:00] Building baseline vs post-2022 comparison table
+[2026-07-11 15:45:24] Running validation checks
+[2026-07-11 15:45:25] Replication complete

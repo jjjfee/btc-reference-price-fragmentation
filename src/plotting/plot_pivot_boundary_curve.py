@@ -125,7 +125,7 @@ def main():
     ap.add_argument(
         "--outdir",
         type=str,
-        default=r"D:\cilck here\2代目\paper_outputs_frl\figures",
+        default=str(Path(__file__).resolve().parents[2] / "outputs" / "main_text" / "figures"),
         help="Output directory for figures",
     )
     ap.add_argument(

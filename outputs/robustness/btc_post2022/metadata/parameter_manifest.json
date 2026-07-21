@@ -1,0 +1,33 @@
+{
+  "main_sample_period_preserved": [
+    "2021-01-01",
+    "2022-12-31 23:59:00"
+  ],
+  "post_sample_selected_start": "2023-01-01 00:00:00+00:00",
+  "post_sample_selected_end": "2025-10-11 11:02:00+00:00",
+  "min_exchanges_per_minute": 3,
+  "n_sample_minutes_for_dvonly_events": 100000,
+  "dvonly_event_seed": 42,
+  "bootstrap_seed": 20260710,
+  "bootstrap_reps": 5000,
+  "pivot_nbins": 30,
+  "headline_event_scope": "all shock_type and gamma events from the DV-only perturbation sample",
+  "main_text_boundary_plot_scope": "shock_type=inflate_only, gamma=1.0",
+  "shock_types": [
+    "inflate_only",
+    "reallocate_total_fixed"
+  ],
+  "delta_ws": [
+    0.5,
+    1.0,
+    2.0,
+    -0.5
+  ],
+  "price_passthrough_lambdas": [
+    0.001,
+    -0.001,
+    0.01,
+    -0.01
+  ],
+  "calibration_source": "<PROJECT_ROOT>\\dv_unit_and_price_scale_report.xlsx"
+}

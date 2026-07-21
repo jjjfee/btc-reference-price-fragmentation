@@ -1,164 +1,43 @@
-# Kaggle BTCUSD Source-Data Manifest
+# Kaggle BTCUSD source-data manifest
 
-This manifest documents the external raw data source used for the paper:
+## Source
 
-**When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets**
+- Dataset: Comprehensive BTCUSD 1m Data
+- URL: https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data
+- Access date used in the manuscript: 16 May 2026
+- Reported license: CC BY-SA 4.0
+- Target frequency and window: one minute, UTC, 2021-01-01 through 2022-12-31 for the baseline; later observations are used by Appendix I.
+- Redistribution: raw files are not included in this repository.
 
-The raw data are not redistributed in this repository. This file records the source, access information, expected venue files, and data-convention notes needed to reproduce the processed BTCUSD benchmark-mapping panel.
+## Expected files and columns
 
----
+Expected raw names are `BTCUSD_1m_<Venue>.csv` for Binance, Bitfinex, BitMEX, Bitstamp, Coinbase, KuCoin, and OKX. Preprocessing detects the timestamp and OHLC/close/volume fields, harmonizes prices, removes duplicate minutes, and does not interpolate missing venue observations.
 
-## 1. External data source
+The processed convention is `time_utc`, `p_usd_scaled`, `DV_usd`, and a volume-unit diagnostic. Base-volume venues use price × volume. BitMEX is handled as quote-or-contract dollar volume after diagnostics.
 
-Dataset name:
+## Available downstream hashes
 
-**Comprehensive BTCUSD 1m Data**
+The saved workflow did not preserve raw-file hashes, so none are invented. It did preserve SHA-256 hashes for the seven processed 2021–2022 venue files:
 
-Dataset URL:
-
-https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data
-
-Access date used in the paper:
-
-**16 May 2026**
-
-License reported in the manuscript data-availability statement:
-
-**CC BY-SA 4.0**
-
-Users should download the raw files directly from Kaggle. The raw files are intentionally excluded from this repository.
-
----
-
-## 2. Venue coverage
-
-The empirical panel uses BTCUSD minute-level files for seven venues:
-
-| Venue | Expected raw-file naming pattern |
+| Venue | Processed SHA-256 |
 |---|---|
-| Binance | `BTCUSD_1m_Binance.csv` |
-| Bitfinex | `BTCUSD_1m_Bitfinex.csv` |
-| BitMEX | `BTCUSD_1m_BitMEX.csv` |
-| Bitstamp | `BTCUSD_1m_Bitstamp.csv` |
-| Coinbase | `BTCUSD_1m_Coinbase.csv` |
-| KuCoin | `BTCUSD_1m_KuCoin.csv` |
-| OKX | `BTCUSD_1m_OKX.csv` |
+| Binance | `d7fe8f54ab0d1249c844df27422f16150c46564f62f31edbbd13dddde043acba` |
+| Bitfinex | `c025317fd381e6c67bbfc52fc24244d193dec5af58973cf37b0e7a5b5969379c` |
+| BitMEX | `d2a97c2dbcd418c7c09f3458264add23130ca5a5691f0a6ac9a7a5a961d829f4` |
+| Bitstamp | `d9f71681dcb7b9271fefc01e098e81dbc097145ece9595be4fc2433ee921a6e8` |
+| Coinbase | `7fc88bc24901754b5cb7421393621c12ad1e2379da4bf162d0cdc698c08bc9dc` |
+| KuCoin | `a67512ff4b63cc7870988a6288ffff27a3a75df284e3243887d139209ff014df` |
+| OKX | `1392af608a6a8334b1d6782feb9bf27b0c53e761aa1dfbb759fa3a40afa1639e` |
 
-The exact filenames may differ depending on the Kaggle download package. If filenames differ, update the input-path or exchange-name parsing logic in the relevant preprocessing script.
+The complete saved file-size, row-count, schema, and convention record is `outputs/reviewer_checks/btc_fixed_composition/metadata/btc_input_file_manifest.csv`.
 
----
+## Downstream generators
 
-## 3. Sample period and frequency
+- `src/build/make_dv_2021_2022.py`
+- `src/build/build_aggregated_prices.py`
+- `src/build/weight_concentration_check.py`
+- `src/build/build_hhi_trend_panel.py`
+- `src/experiments/run_dv_only_injection_experiments.py`
+- `src/experiments/run_btc_post2022_replication.py`
 
-Target sample period:
-
-```text
-2021-01-01 to 2022-12-31
-```
-
-Frequency:
-
-```text
-1 minute
-```
-
-Timestamp convention:
-
-```text
-UTC
-```
-
-The preprocessing scripts parse timestamps to UTC, align exchange-level observations to a common minute grid, and do not interpolate missing venue-minute observations.
-
----
-
-## 4. Raw data redistribution policy
-
-The following files are not redistributed in this repository:
-
-- raw Kaggle CSV files;
-- full venue-level processed files;
-- large benchmark-panel files;
-- large dollar-volume-only perturbation samples;
-- large intermediate audit files.
-
-Users should obtain the raw Kaggle files directly and run the preprocessing scripts locally.
-
----
-
-## 5. Processed file convention
-
-The main preprocessing stage produces venue-level files with a naming convention such as:
-
-```text
-dv_ready_2021_2022/BTCUSD_1m_<Exchange>_2021_2022_with_DV.csv
-```
-
-Key processed fields include:
-
-| Field | Meaning |
-|---|---|
-| `time_utc` | UTC minute timestamp |
-| `p_usd_scaled` | venue price aligned to a common BTCUSD scale |
-| `DV_usd` | synchronized dollar-volume or dollar-volume-proxy weight |
-| `volume_unit_final` | inferred volume-unit convention used during preprocessing |
-
-These files are generated locally and are not stored in the GitHub repository.
-
----
-
-## 6. Price and volume conventions
-
-Public OHLCV files can differ across exchanges in product conventions, price scale, and volume units. The replication workflow treats the synchronized inputs as BTCUSD price-volume proxies for benchmark-mapping purposes.
-
-The preprocessing stage performs:
-
-1. timestamp parsing and UTC alignment;
-2. price-scale harmonization across venues;
-3. volume-unit diagnostics;
-4. construction of dollar-volume or dollar-volume-proxy weights;
-5. exclusion of invalid venue-minute observations from the aggregation weight in that minute.
-
-BitMEX is retained after volume-unit diagnostics and handled under the quote-or-contract dollar-volume convention rather than as a base-volume spot venue.
-
-The resulting panel is a harmonized benchmark-mapping panel. It is not intended to be a regulated investable benchmark input file.
-
----
-
-## 7. Downstream files generated from this source
-
-Representative downstream outputs include:
-
-```text
-agg_ready/btc_2021_2022_agg_prices.csv
-agg_ready/agg_data_quality_report.xlsx
-experiments/weight_concentration_minute_level.csv
-hhi_panel/btc_1m_panel_with_hhi.csv
-experiments_dvonly/dvon_injection_shift_samples.csv
-```
-
-Selected final figures, tables, metadata, and run notes are kept in the repository under:
-
-```text
-outputs/
-docs/runinfo/
-docs/diagnostics/
-```
-
-Large intermediate files remain local and are excluded by `.gitignore`.
-
----
-
-## 8. Relation to the paper
-
-The source data support the paper's benchmark-mapping exercise. The main empirical objects constructed from the raw files are:
-
-- VWAP reference prices;
-- LWMP reference prices;
-- dominant venue and dominant share;
-- HHI concentration measures;
-- LWMP pivot and pivot-switchability diagnostics;
-- VWAP dominant-venue exposure diagnostics;
-- fixed-weight price-displacement pass-through diagnostics.
-
-The analysis studies how aggregation rules convert observed cross-venue price-weight states into reference prices under trading concentration.
+Generated raw-derived panels and event-level files remain outside version control.

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "paper_title": "When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets",
+  "submission_status": "submitted manuscript; not accepted or published",
+  "main_text_artifacts": [
+    "outputs/main_text/figures/Fig_LWMP_boundary_single_gamma1_inflate_only.png",
+    "outputs/main_text/figures/Fig_vwap_head_proximity_q95_by_maxshare.png",
+    "outputs/main_text/tables/headline_pivot_change_rates.csv",
+    "outputs/main_text/tables/table_lockin_persistence_main_rebuilt.csv",
+    "outputs/main_text/tables/table_lockin_persistence_main_rebuilt.xlsx"
+  ],
+  "appendices": [
+    {
+      "appendix": "A",
+      "title": "Perturbation and Classification Sensitivity",
+      "scripts": ["src/audit/run_threshold_robustness.py"],
+      "artifacts": ["outputs/appendix/A/threshold_robustness_summary.csv", "outputs/appendix/A/Fig_share_lockin_vs_threshold__max_share.png"]
+    },
+    {
+      "appendix": "B",
+      "title": "Subsample and Temporal-Dependence Validation",
+      "scripts": ["src/audit/run_subsample_robustness.py", "src/experiments/run_day_block_bootstrap.py"],
+      "artifacts": ["outputs/appendix/B/subsample_robustness_summary.csv", "outputs/robustness/bootstrap_1day/bootstrap_summary.csv", "outputs/robustness/bootstrap_7day/bootstrap_summary.csv"]
+    },
+    {
+      "appendix": "C",
+      "title": "Structural-Exclusion Validation",
+      "scripts": ["src/audit/run_exclude_binance.py", "src/audit/summarize_exclude_binance.py"],
+      "artifacts": ["outputs/appendix/C/exclude_binance_summary_main.csv", "outputs/appendix/C/exclude_binance_summary_overall.csv", "outputs/appendix/C/exclude_binance_summary_by_exchange.csv"]
+    },
+    {
+      "appendix": "D",
+      "title": "LWMP Mechanism Audit: Majority-Weight Pivot Guarantee",
+      "scripts": ["src/audit/audit_lockin_and_build_dvonly_inference.py"],
+      "artifacts": ["outputs/appendix/D/audit_lockin_summary.csv", "outputs/appendix/D/audit_lockin_bins.csv", "outputs/appendix/D/Fig_lockin_pivot_is_dominant_rate_by_maxshare.png"]
+    },
+    {
+      "appendix": "E",
+      "title": "Supplementary VWAP Evidence: Observed Proximity and Perturbation Responses",
+      "scripts": ["src/audit/make_vwap_degradation_bins_maxshare.py", "src/audit/plot_vwap_tail_by_maxshare_lambda.py"],
+      "artifacts": ["outputs/appendix/E/vwap_degradation_curve_bins_maxshare_delta1p0.csv", "outputs/appendix/E/Table_VWAP_tail_over_lambda_by_maxshare_quintile.csv", "outputs/appendix/E/Fig_vwap_degradation_q95abs_by_maxshare_delta1p0.png"]
+    },
+    {
+      "appendix": "F",
+      "title": "Implementation Consistency of the Majority-Weight State",
+      "scripts": ["src/audit/rebuild_observed_lockin_persistence.py"],
+      "artifacts": ["outputs/appendix/F/table_lockin_persistence_appendix_rebuilt.csv"]
+    },
+    {
+      "appendix": "G",
+      "title": "Fixed-Weight Dominant-Price Displacement Pass-Through",
+      "scripts": ["src/audit/run_price_displacement_audit.py"],
+      "artifacts": ["outputs/appendix/G/summary_by_state_lambda.csv", "outputs/appendix/G/quantiles_by_state_lambda.csv", "outputs/appendix/G/sanity_checks_by_lambda.csv"]
+    },
+    {
+      "appendix": "H",
+      "title": "Leave-One-Exchange-Out Validation",
+      "scripts": ["src/audit/run_leave_one_exchange_out_validation.py"],
+      "artifacts": ["outputs/robustness/leave_one_exchange_out/main_contrast_summary.csv", "outputs/robustness/leave_one_exchange_out/settlement_pass_through_summary.csv", "outputs/robustness/leave_one_exchange_out/VALIDATION_REPORT.md"]
+    },
+    {
+      "appendix": "I",
+      "title": "BTCUSD Post-2022 Out-of-Sample Replication",
+      "scripts": ["src/experiments/run_btc_post2022_replication.py"],
+      "artifacts": ["outputs/robustness/btc_post2022/results/btc_post2022_lockin_summary.csv", "outputs/robustness/btc_post2022/results/btc_post2022_pivot_contrast_summary.csv", "outputs/robustness/btc_post2022/results/btc_post2022_block_bootstrap.csv", "outputs/robustness/btc_post2022/REPLICATION_REPORT.md"]
+    },
+    {
+      "appendix": "J",
+      "title": "Matched ETHUSD Cross-Asset Replication",
+      "scripts": ["src/experiments/run_eth_replication.py"],
+      "artifacts": ["outputs/robustness/eth_matched/results/eth_lockin_summary.csv", "outputs/robustness/eth_matched/results/eth_pivot_contrast_summary.csv", "outputs/robustness/eth_matched/results/eth_block_bootstrap.csv", "outputs/robustness/eth_matched/REPLICATION_REPORT.md"]
+    },
+    {
+      "appendix": "K",
+      "title": "ETHUSD Targeted Venue Exclusions",
+      "scripts": ["src/experiments/run_eth_exclude_binance.py"],
+      "artifacts": ["outputs/robustness/eth_matched/results/eth_targeted_exclusion_summary.csv", "outputs/robustness/eth_exclude_binance/results/eth_exclusion_comparison.csv", "outputs/robustness/eth_exclude_binance/REPLICATION_REPORT.md"]
+    },
+    {
+      "appendix": "L",
+      "title": "Event Construction and Fixed-Composition BTCUSD Checks",
+      "scripts": ["src/experiments/run_dv_only_injection_experiments.py", "src/audit/run_btc_fixed_composition_checks.py"],
+      "artifacts": ["outputs/reviewer_checks/btc_fixed_composition/results/btc_fixed_composition_summary.csv", "outputs/reviewer_checks/btc_fixed_composition/results/btc_fixed_composition_pivot_summary.csv", "outputs/reviewer_checks/btc_fixed_composition/results/btc_basevolume6_lockin_summary.csv", "outputs/reviewer_checks/btc_fixed_composition/results/btc_basevolume6_pivot_summary.csv", "outputs/reviewer_checks/btc_fixed_composition/metadata/validation_checks.csv", "outputs/reviewer_checks/btc_fixed_composition/REVIEW_REPORT.md"]
+    }
+  ]
+}

@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 # -----------------------------
 # USER CONFIG
 # -----------------------------
-ROOT = Path(r"D:\cilck here\2代目")
+ROOT = Path(__file__).resolve().parents[2]
 
 DVON_FILE = ROOT / "experiments_dvonly" / "dvon_injection_shift_samples.csv"
 PANEL_FILE = ROOT / "hhi_panel" / "btc_1m_panel_with_hhi.csv"

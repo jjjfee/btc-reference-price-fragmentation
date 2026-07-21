@@ -1,0 +1,487 @@
+check_id,check_name,status,severity,scenario,value,threshold,message
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:main_contrast_summary,sheet present or fallback CSV present,Loaded main_contrast_summary from excel:main_contrast_summary.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:diagnostics,sheet present or fallback CSV present,Loaded diagnostics from excel:diagnostics.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:lwmp_pivot_switchability,sheet present or fallback CSV present,Loaded lwmp_pivot_switchability from excel:lwmp_pivot_switchability.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:settlement_pass_through,sheet present or fallback CSV present,Loaded settlement_pass_through from excel:settlement_pass_through.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:scenario_summary,sheet present or fallback CSV present,Loaded scenario_summary from excel:scenario_summary.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:dominant_distribution,sheet present or fallback CSV present,Loaded dominant_distribution from excel:dominant_distribution.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:spell_summary,sheet present or fallback CSV present,Loaded spell_summary from excel:spell_summary.
+SOURCE_001,Required sheet or CSV source available,PASS,INFO,ALL,excel:vwap_proximity_bins,sheet present or fallback CSV present,Loaded vwap_proximity_bins from excel:vwap_proximity_bins.
+SCENARIO_001,Expected scenarios present in main_contrast_summary,PASS,INFO,ALL,"['EXCL_Binance', 'EXCL_BitMEX', 'EXCL_Bitfinex', 'EXCL_Bitstamp', 'EXCL_Coinbase', 'EXCL_KuCoin', 'EXCL_OKX', 'FULL']","['FULL', 'EXCL_Binance', 'EXCL_Bitfinex', 'EXCL_BitMEX', 'EXCL_Bitstamp', 'EXCL_Coinbase', 'EXCL_KuCoin', 'EXCL_OKX']",Main contrast scenarios match expected list.
+SCENARIO_002,Expected scenarios present in scenario_summary,PASS,INFO,ALL,"['EXCL_Binance', 'EXCL_BitMEX', 'EXCL_Bitfinex', 'EXCL_Bitstamp', 'EXCL_Coinbase', 'EXCL_KuCoin', 'EXCL_OKX', 'FULL']","['FULL', 'EXCL_Binance', 'EXCL_Bitfinex', 'EXCL_BitMEX', 'EXCL_Bitstamp', 'EXCL_Coinbase', 'EXCL_KuCoin', 'EXCL_OKX']",Scenario summary scenarios match expected list.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,FULL,7,7,FULL uses 7 exchanges; expected 7.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,FULL,1051200,>= 99% of FULL valid_minutes,FULL valid minutes are 1.000000 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,FULL,0.5549305555555556,"[0,1]",lockin_share=0.5549305555555556 for FULL.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,FULL,0.5235665366929418,"[0,1]",median_max_share=0.5235665366929418 for FULL.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,FULL,0.8342022878574714,"[0,1]",p90_max_share=0.8342022878574714 for FULL.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,FULL,0.880189881219294,"[0,1]",p95_max_share=0.880189881219294 for FULL.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,FULL,"median=0.5235665366929418, p90=0.8342022878574714, p95=0.880189881219294",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_Binance,6,6,EXCL_Binance uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_Binance,1051199,>= 99% of FULL valid_minutes,EXCL_Binance valid minutes are 0.999999 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_Binance,0.4504789292988293,"[0,1]",lockin_share=0.4504789292988293 for EXCL_Binance.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_Binance,0.4794697059159872,"[0,1]",median_max_share=0.4794697059159872 for EXCL_Binance.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_Binance,0.7248900025586055,"[0,1]",p90_max_share=0.7248900025586055 for EXCL_Binance.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_Binance,0.7924658214587827,"[0,1]",p95_max_share=0.7924658214587827 for EXCL_Binance.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_Binance,"median=0.4794697059159872, p90=0.7248900025586055, p95=0.7924658214587827",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_Bitfinex,6,6,EXCL_Bitfinex uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_Bitfinex,1051200,>= 99% of FULL valid_minutes,EXCL_Bitfinex valid minutes are 1.000000 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_Bitfinex,0.6010540334855403,"[0,1]",lockin_share=0.6010540334855403 for EXCL_Bitfinex.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_Bitfinex,0.542649680504375,"[0,1]",median_max_share=0.542649680504375 for EXCL_Bitfinex.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_Bitfinex,0.8407407194367301,"[0,1]",p90_max_share=0.8407407194367301 for EXCL_Bitfinex.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_Bitfinex,0.8846727772347132,"[0,1]",p95_max_share=0.8846727772347132 for EXCL_Bitfinex.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_Bitfinex,"median=0.542649680504375, p90=0.8407407194367301, p95=0.8846727772347132",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_BitMEX,6,6,EXCL_BitMEX uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_BitMEX,1051200,>= 99% of FULL valid_minutes,EXCL_BitMEX valid minutes are 1.000000 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_BitMEX,0.7788850837138508,"[0,1]",lockin_share=0.7788850837138508 for EXCL_BitMEX.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_BitMEX,0.6241588628941184,"[0,1]",median_max_share=0.6241588628941184 for EXCL_BitMEX.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_BitMEX,0.8735194400126525,"[0,1]",p90_max_share=0.8735194400126525 for EXCL_BitMEX.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_BitMEX,0.9086753757029935,"[0,1]",p95_max_share=0.9086753757029935 for EXCL_BitMEX.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_BitMEX,"median=0.6241588628941184, p90=0.8735194400126525, p95=0.9086753757029935",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_Bitstamp,6,6,EXCL_Bitstamp uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_Bitstamp,1051200,>= 99% of FULL valid_minutes,EXCL_Bitstamp valid minutes are 1.000000 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_Bitstamp,0.5822241248097413,"[0,1]",lockin_share=0.5822241248097413 for EXCL_Bitstamp.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_Bitstamp,0.5348455474541878,"[0,1]",median_max_share=0.5348455474541878 for EXCL_Bitstamp.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_Bitstamp,0.8386364877852696,"[0,1]",p90_max_share=0.8386364877852696 for EXCL_Bitstamp.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_Bitstamp,0.8840121713991838,"[0,1]",p95_max_share=0.8840121713991838 for EXCL_Bitstamp.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_Bitstamp,"median=0.5348455474541878, p90=0.8386364877852696, p95=0.8840121713991838",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_Coinbase,6,6,EXCL_Coinbase uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_Coinbase,1051199,>= 99% of FULL valid_minutes,EXCL_Coinbase valid minutes are 0.999999 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_Coinbase,0.7317529792170655,"[0,1]",lockin_share=0.7317529792170655 for EXCL_Coinbase.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_Coinbase,0.6029080305108115,"[0,1]",median_max_share=0.6029080305108115 for EXCL_Coinbase.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_Coinbase,0.9074813412665381,"[0,1]",p90_max_share=0.9074813412665381 for EXCL_Coinbase.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_Coinbase,0.942667896425015,"[0,1]",p95_max_share=0.942667896425015 for EXCL_Coinbase.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_Coinbase,"median=0.6029080305108115, p90=0.9074813412665381, p95=0.942667896425015",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_KuCoin,6,6,EXCL_KuCoin uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_KuCoin,1051199,>= 99% of FULL valid_minutes,EXCL_KuCoin valid minutes are 0.999999 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_KuCoin,0.642102970037072,"[0,1]",lockin_share=0.642102970037072 for EXCL_KuCoin.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_KuCoin,0.562517360771817,"[0,1]",median_max_share=0.562517360771817 for EXCL_KuCoin.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_KuCoin,0.8633839696722536,"[0,1]",p90_max_share=0.8633839696722536 for EXCL_KuCoin.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_KuCoin,0.9051563163479486,"[0,1]",p95_max_share=0.9051563163479486 for EXCL_KuCoin.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_KuCoin,"median=0.562517360771817, p90=0.8633839696722536, p95=0.9051563163479486",median <= p90 <= p95,Concentration quantiles are ordered.
+SCENARIO_003,n_exchanges_used is correct,PASS,INFO,EXCL_OKX,6,6,EXCL_OKX uses 6 exchanges; expected 6.
+SCENARIO_004,valid_minutes close to full sample,PASS,INFO,EXCL_OKX,1051200,>= 99% of FULL valid_minutes,EXCL_OKX valid minutes are 1.000000 of FULL.
+SCENARIO_005,"lockin_share in [0,1]",PASS,INFO,EXCL_OKX,0.6592408675799086,"[0,1]",lockin_share=0.6592408675799086 for EXCL_OKX.
+SCENARIO_005,"median_max_share in [0,1]",PASS,INFO,EXCL_OKX,0.5686167266970887,"[0,1]",median_max_share=0.5686167266970887 for EXCL_OKX.
+SCENARIO_005,"p90_max_share in [0,1]",PASS,INFO,EXCL_OKX,0.8512051719187285,"[0,1]",p90_max_share=0.8512051719187285 for EXCL_OKX.
+SCENARIO_005,"p95_max_share in [0,1]",PASS,INFO,EXCL_OKX,0.8927901530219016,"[0,1]",p95_max_share=0.8927901530219016 for EXCL_OKX.
+SCENARIO_006,max-share quantiles are monotone,PASS,INFO,EXCL_OKX,"median=0.5686167266970887, p90=0.8512051719187285, p95=0.8927901530219016",median <= p90 <= p95,Concentration quantiles are ordered.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,FULL,Main contrast preserved,Main contrast preserved,FULL verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,FULL,nonlock=0.313881; lock=0.079090,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,FULL,0.2519750924292666,< 1,Pivot-change ratio is 0.251975.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,FULL,nonlock=0.416821; lock=0.663727,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,FULL,0.9999999999998898,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_Binance,Main contrast preserved,Main contrast preserved,EXCL_Binance verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_Binance,nonlock=0.358940; lock=0.154471,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_Binance,0.4303518471387073,< 1,Pivot-change ratio is 0.430352.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_Binance,nonlock=0.397170; lock=0.618608,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_Binance,0.9999999999998899,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_Bitfinex,Main contrast preserved,Main contrast preserved,EXCL_Bitfinex verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_Bitfinex,nonlock=0.346529; lock=0.104288,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_Bitfinex,0.3009512491936679,< 1,Pivot-change ratio is 0.300951.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_Bitfinex,nonlock=0.424852; lock=0.660791,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_Bitfinex,0.9999999999998899,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_BitMEX,Main contrast preserved,Main contrast preserved,EXCL_BitMEX verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_BitMEX,nonlock=0.301639; lock=0.071915,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_BitMEX,0.2384158151584211,< 1,Pivot-change ratio is 0.238416.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_BitMEX,nonlock=0.441623; lock=0.678879,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_BitMEX,0.9999999999998898,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+BITMEX_001,EXCL_BitMEX field lwmp_pivot_change_nonlockin_baseline is finite,PASS,INFO,EXCL_BitMEX,0.3016389001760802,finite numeric value,EXCL_BitMEX lwmp_pivot_change_nonlockin_baseline=0.3016389001760802.
+BITMEX_001,EXCL_BitMEX field lwmp_pivot_change_lockin_baseline is finite,PASS,INFO,EXCL_BitMEX,0.07191548426896976,finite numeric value,EXCL_BitMEX lwmp_pivot_change_lockin_baseline=0.07191548426896976.
+BITMEX_001,EXCL_BitMEX field lwmp_pivot_change_ratio_lockin_to_nonlockin is finite,PASS,INFO,EXCL_BitMEX,0.2384158151584211,finite numeric value,EXCL_BitMEX lwmp_pivot_change_ratio_lockin_to_nonlockin=0.2384158151584211.
+BITMEX_001,EXCL_BitMEX field vwap_kappa_median_nonlockin_lambda_0p001 is finite,PASS,INFO,EXCL_BitMEX,0.4416231243870404,finite numeric value,EXCL_BitMEX vwap_kappa_median_nonlockin_lambda_0p001=0.4416231243870404.
+BITMEX_001,EXCL_BitMEX field vwap_kappa_median_lockin_lambda_0p001 is finite,PASS,INFO,EXCL_BitMEX,0.6788789745265368,finite numeric value,EXCL_BitMEX vwap_kappa_median_lockin_lambda_0p001=0.6788789745265368.
+BITMEX_001,EXCL_BitMEX field lwmp_kappa_median_nonlockin_lambda_0p001 is finite,PASS,INFO,EXCL_BitMEX,0.09059128217647527,finite numeric value,EXCL_BitMEX lwmp_kappa_median_nonlockin_lambda_0p001=0.09059128217647527.
+BITMEX_001,EXCL_BitMEX field lwmp_kappa_median_lockin_lambda_0p001 is finite,PASS,INFO,EXCL_BitMEX,0.9999999999998898,finite numeric value,EXCL_BitMEX lwmp_kappa_median_lockin_lambda_0p001=0.9999999999998898.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_Bitstamp,Main contrast preserved,Main contrast preserved,EXCL_Bitstamp verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_Bitstamp,nonlock=0.354061; lock=0.096249,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_Bitstamp,0.2718423758164393,< 1,Pivot-change ratio is 0.271842.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_Bitstamp,nonlock=0.422088; lock=0.661427,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_Bitstamp,0.9999999999998899,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_Coinbase,Main contrast preserved,Main contrast preserved,EXCL_Coinbase verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_Coinbase,nonlock=0.322075; lock=0.090515,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_Coinbase,0.2810363380378406,< 1,Pivot-change ratio is 0.281036.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_Coinbase,nonlock=0.443053; lock=0.677969,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_Coinbase,0.9999999999998898,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_KuCoin,Main contrast preserved,Main contrast preserved,EXCL_KuCoin verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_KuCoin,nonlock=0.343137; lock=0.109512,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_KuCoin,0.3191483906805824,< 1,Pivot-change ratio is 0.319148.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_KuCoin,nonlock=0.429595; lock=0.669364,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_KuCoin,0.9999999999998898,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+MAIN_001,Verdict is Main contrast preserved,PASS,INFO,EXCL_OKX,Main contrast preserved,Main contrast preserved,EXCL_OKX verdict is Main contrast preserved.
+LWMP_001,Non-lock-in pivot-change rate exceeds lock-in,PASS,INFO,EXCL_OKX,nonlock=0.349841; lock=0.108129,non-lock-in > lock-in,LWMP pivot switchability falls under lock-in.
+LWMP_002,Pivot-change lock-in/non-lock-in ratio below 1,PASS,INFO,EXCL_OKX,0.3090802617483058,< 1,Pivot-change ratio is 0.309080.
+VWAP_001,VWAP lock-in kappa exceeds non-lock-in kappa,PASS,INFO,EXCL_OKX,nonlock=0.432875; lock=0.665111,lock-in > non-lock-in,VWAP pass-through rises with dominant share.
+LWMP_003,LWMP lock-in kappa close to 1,PASS,INFO,EXCL_OKX,0.9999999999998898,|kappa - 1| <= 0.05 PASS; <= 0.10 WARNING,LWMP lock-in median kappa is 1.000000.
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,FULL,7.949196856316121e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4168213751882261, median_max_share=0.4168213751883056."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,FULL,1.6642243139131097e-13,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6637270212896035, median_max_share=0.6637270212897699."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Binance,9.980904991380157e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.3971704198543259, median_max_share=0.3971704198544257."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Binance,7.038813976123492e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6186084260483536, median_max_share=0.618608426048424."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Bitfinex,3.7914116290949096e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4248520452923512, median_max_share=0.4248520452923891."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Bitfinex,1.667554982986985e-13,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6607907025435293, median_max_share=0.6607907025436961."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_BitMEX,4.0467629247586956e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4416231243870404, median_max_share=0.4416231243869999."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_BitMEX,2.7644553313166398e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6788789745265368, median_max_share=0.6788789745265644."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Bitstamp,3.169686735304822e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4220875066783394, median_max_share=0.4220875066783711."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Bitstamp,7.049916206369744e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.661427437551583, median_max_share=0.6614274375516535."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Coinbase,2.0278223544778484e-13,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4430529025076043, median_max_share=0.4430529025078071."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_Coinbase,1.0680345496894006e-13,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6779689209165509, median_max_share=0.6779689209166577."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_KuCoin,2.808864252301646e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4295950485508607, median_max_share=0.4295950485508888."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_KuCoin,7.72715225139109e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.669363773263296, median_max_share=0.6693637732633733."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_OKX,4.579669976578771e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=0: vwap_median=0.4328746166161566, median_max_share=0.4328746166161108."
+VWAP_002,VWAP median kappa matches conditional median max_share,PASS,INFO,EXCL_OKX,9.525713551283843e-14,<= 0.02 PASS; <= 0.05 WARNING,"lambda=0.001 lock_in=1: vwap_median=0.6651114214835994, median_max_share=0.6651114214836946."
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,Binance file=BTCUSD_1m_Binance_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,WARNING,LOW,INPUT,81.0,original run diagnostics status,Binance price_missing_or_nonpositive=0; dv_missing_or_nonpositive=81
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,Binance file=BTCUSD_1m_Binance_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,Bitfinex file=BTCUSD_1m_Bitfinex_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,PASS,INFO,INPUT,0.0,original run diagnostics status,Bitfinex price_missing_or_nonpositive=0; dv_missing_or_nonpositive=0
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,Bitfinex file=BTCUSD_1m_Bitfinex_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,BitMEX file=BTCUSD_1m_BitMEX_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,WARNING,LOW,INPUT,17239.0,original run diagnostics status,BitMEX price_missing_or_nonpositive=0; dv_missing_or_nonpositive=17239
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,BitMEX file=BTCUSD_1m_BitMEX_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,Bitstamp file=BTCUSD_1m_Bitstamp_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,WARNING,LOW,INPUT,17660.0,original run diagnostics status,Bitstamp price_missing_or_nonpositive=0; dv_missing_or_nonpositive=17660
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,Bitstamp file=BTCUSD_1m_Bitstamp_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,Coinbase file=BTCUSD_1m_Coinbase_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,PASS,INFO,INPUT,0.0,original run diagnostics status,Coinbase price_missing_or_nonpositive=0; dv_missing_or_nonpositive=0
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,Coinbase file=BTCUSD_1m_Coinbase_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,KuCoin file=BTCUSD_1m_KuCoin_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,WARNING,LOW,INPUT,1136.0,original run diagnostics status,KuCoin price_missing_or_nonpositive=0; dv_missing_or_nonpositive=1136
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,KuCoin file=BTCUSD_1m_KuCoin_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: duplicate_timestamps,PASS,INFO,INPUT,0.0,original run diagnostics status,OKX file=BTCUSD_1m_OKX_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: missing_or_nonpositive_price_dv,WARNING,LOW,INPUT,1714.0,original run diagnostics status,OKX price_missing_or_nonpositive=0; dv_missing_or_nonpositive=1714
+ORIG_DIAG_001,Original diagnostics: negative_dv_in_processed_file,PASS,INFO,INPUT,0.0,original run diagnostics status,OKX file=BTCUSD_1m_OKX_2021_2022_with_DV.csv
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,FULL,5.551115123125783e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,FULL,5.551115123125783e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,FULL,1051200.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=0
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,FULL,7.0,original run diagnostics status,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,FULL,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,FULL,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,FULL,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,FULL,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,FULL,100000.0,original run diagnostics status,total_candidates=7314253
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,96091.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,92207.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,FULL,85171.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,FULL,5.119238366546597e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.200226536677665e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,FULL,5.119238366546597e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.200226536677665e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,FULL,5.696554339351678e-13,original run diagnostics status,lambda=0.001; mean_abs=8.974691914923124e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,FULL,5.696554339351678e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=8.974691914923124e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,FULL,6.372680161348399e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.283969876819299e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,FULL,6.372680161348399e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.283969876819299e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,FULL,5.229150445984487e-14,original run diagnostics status,lambda=0.01; mean_abs=7.311782986110028e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,FULL,5.229150445984487e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.311782986110028e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_Binance,6.661338147750939e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_Binance,6.661338147750939e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_Binance,1051199.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=1
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_Binance,6.0,original run diagnostics status,"Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_Binance,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_Binance,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_Binance,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_Binance,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,total_candidates=6264125
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,97365.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,92475.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Binance,83305.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Binance,4.710676293484539e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.1648569650917e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Binance,4.710676293484539e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.1648569650917e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Binance,5.45785638905727e-13,original run diagnostics status,lambda=0.001; mean_abs=8.639384388173854e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Binance,5.45785638905727e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=8.639384388173854e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Binance,4.807265696626928e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.192772140699686e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Binance,4.807265696626928e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.192772140699686e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Binance,5.484501741648273e-14,original run diagnostics status,lambda=0.01; mean_abs=7.241910038555158e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Binance,5.484501741648273e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.241910038555158e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_Bitfinex,6.661338147750939e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_Bitfinex,6.661338147750939e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_Bitfinex,1051200.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=0
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_Bitfinex,6.0,original run diagnostics status,"Binance,BitMEX,Bitstamp,Coinbase,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_Bitfinex,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_Bitfinex,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_Bitfinex,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_Bitfinex,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,total_candidates=6268230
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,95061.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,89821.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitfinex,81892.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitfinex,4.564126854234019e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.208678780106753e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitfinex,4.564126854234019e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.208678780106753e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitfinex,5.63882274207117e-13,original run diagnostics status,lambda=0.001; mean_abs=9.054498351623255e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitfinex,5.63882274207117e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.054498351623255e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitfinex,5.861977570020827e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.272209613415234e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitfinex,5.861977570020827e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.272209613415234e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitfinex,4.862776847858186e-14,original run diagnostics status,lambda=0.01; mean_abs=7.311612365362665e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitfinex,4.862776847858186e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.311612365362665e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_BitMEX,6.661338147750939e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_BitMEX,6.661338147750939e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_BitMEX,1051200.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=0
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_BitMEX,6.0,original run diagnostics status,"Binance,Bitfinex,Bitstamp,Coinbase,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_BitMEX,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_BitMEX,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_BitMEX,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_BitMEX,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,total_candidates=6280292
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,93052.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,86989.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_BitMEX,81967.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_BitMEX,4.929390229335695e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.194808696900313e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_BitMEX,4.929390229335695e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.194808696900313e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_BitMEX,5.583311590839912e-13,original run diagnostics status,lambda=0.001; mean_abs=9.432041733877289e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_BitMEX,5.583311590839912e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.432041733877289e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_BitMEX,5.162537064506978e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.296846673733692e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_BitMEX,5.162537064506978e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.296846673733692e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_BitMEX,5.162537064506978e-14,original run diagnostics status,lambda=0.01; mean_abs=7.317851825097948e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_BitMEX,5.162537064506978e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.317851825097948e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_Bitstamp,5.551115123125783e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_Bitstamp,5.551115123125783e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_Bitstamp,1051200.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=0
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_Bitstamp,6.0,original run diagnostics status,"Binance,Bitfinex,BitMEX,Coinbase,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_Bitstamp,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_Bitstamp,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_Bitstamp,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_Bitstamp,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,total_candidates=6280713
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,95320.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,90193.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Bitstamp,81824.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitstamp,4.876099524153688e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.206245211264792e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitstamp,4.876099524153688e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.206245211264792e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitstamp,5.412337245047638e-13,original run diagnostics status,lambda=0.001; mean_abs=9.027675096142808e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitstamp,5.412337245047638e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.027675096142808e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitstamp,4.951594689828198e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.269797925324332e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitstamp,4.951594689828198e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.269797925324332e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Bitstamp,6.0285110237146e-14,original run diagnostics status,lambda=0.01; mean_abs=7.301124100489121e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Bitstamp,6.0285110237146e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.301124100489121e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_Coinbase,5.551115123125783e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_Coinbase,5.551115123125783e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_Coinbase,1051199.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=1
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_Coinbase,6.0,original run diagnostics status,"Binance,Bitfinex,BitMEX,Bitstamp,KuCoin,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_Coinbase,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_Coinbase,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_Coinbase,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_Coinbase,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,total_candidates=6263198
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,93499.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,87651.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_Coinbase,80687.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Coinbase,5.819789095085071e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.203523444238063e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Coinbase,5.819789095085071e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.203523444238063e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Coinbase,5.598854713184664e-13,original run diagnostics status,lambda=0.001; mean_abs=9.40508467639976e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Coinbase,5.598854713184664e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.40508467639976e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Coinbase,6.23945339839338e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.295101833248568e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Coinbase,6.23945339839338e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.295101833248568e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_Coinbase,6.09512440519211e-14,original run diagnostics status,lambda=0.01; mean_abs=7.3286612393774e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_Coinbase,6.09512440519211e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.3286612393774e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_KuCoin,5.551115123125783e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_KuCoin,5.551115123125783e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_KuCoin,1051199.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=1
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_KuCoin,6.0,original run diagnostics status,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,OKX"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_KuCoin,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_KuCoin,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_KuCoin,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_KuCoin,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,total_candidates=6264187
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,94485.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,89090.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_KuCoin,81199.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_KuCoin,5.085931675807842e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.209564971699151e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_KuCoin,5.085931675807842e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.209564971699151e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_KuCoin,5.743183706385935e-13,original run diagnostics status,lambda=0.001; mean_abs=9.175485037266805e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_KuCoin,5.743183706385935e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.175485037266805e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_KuCoin,4.829470157119431e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.276914943340906e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_KuCoin,4.829470157119431e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.276914943340906e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_KuCoin,6.139533326177116e-14,original run diagnostics status,lambda=0.01; mean_abs=7.308570772483829e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_KuCoin,6.139533326177116e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.308570772483829e-15
+ORIG_DIAG_001,Original diagnostics: weight_sums_close_to_one,PASS,INFO,EXCL_OKX,5.551115123125783e-16,original run diagnostics status,max abs(sum(normalized weights)-1) among valid minutes
+DIAG_004,Weight sums close to one,PASS,INFO,EXCL_OKX,5.551115123125783e-16,<= 1e-10 PASS; <= 1e-8 WARNING,max abs(sum(normalized weights)-1) among valid minutes
+ORIG_DIAG_001,Original diagnostics: valid_minutes,PASS,INFO,EXCL_OKX,1051200.0,original run diagnostics status,before_min_venues=1051200; min_venues filtered=0
+ORIG_DIAG_001,Original diagnostics: n_exchanges_used,PASS,INFO,EXCL_OKX,6.0,original run diagnostics status,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin"
+ORIG_DIAG_001,Original diagnostics: lockin_pivot_equals_dominant_ratio,PASS,INFO,EXCL_OKX,1.0,original run diagnostics status,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+DIAG_001,lock_in pivot equals dominant_exchange ratio,PASS,INFO,EXCL_OKX,1.0,>= 0.999 PASS; >= 0.99 WARNING,Expected to be near 1 when max_share > 0.5; exact ties can lower it.
+ORIG_DIAG_001,Original diagnostics: negative_weights_after_cleaning,PASS,INFO,EXCL_OKX,0.0,original run diagnostics status,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+DIAG_003,No negative weights after cleaning,PASS,INFO,EXCL_OKX,0,0,Scenario arrays set invalid/nonpositive weights to zero before normalization.
+ORIG_DIAG_001,Original diagnostics: sampled_candidate_events,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,total_candidates=6264767
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,shock_type=inflate_only; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,100000.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=-0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,94531.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=0.5; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,88884.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=1.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: valid_event_shocks,PASS,INFO,EXCL_OKX,81328.0,original run diagnostics status,shock_type=reallocate_total_fixed; delta_w=2.0; sampled_events=100000
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_OKX,4.830580380144056e-13,original run diagnostics status,lambda=-0.001; mean_abs=7.215406634470344e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_OKX,4.830580380144056e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.001; mean_abs=7.215406634470344e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_OKX,5.901945598907332e-13,original run diagnostics status,lambda=0.001; mean_abs=9.176960991706861e-14
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_OKX,5.901945598907332e-13,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.001; mean_abs=9.176960991706861e-14
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_OKX,5.306866057708248e-14,original run diagnostics status,lambda=-0.01; mean_abs=7.280016608360894e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_OKX,5.306866057708248e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=-0.01; mean_abs=7.280016608360894e-15
+ORIG_DIAG_001,Original diagnostics: vwap_kappa_equals_max_share,PASS,INFO,EXCL_OKX,6.439293542825908e-14,original run diagnostics status,lambda=0.01; mean_abs=7.322813503891123e-15
+DIAG_002,VWAP kappa equals max_share max absolute error,PASS,INFO,EXCL_OKX,6.439293542825908e-14,<= 1e-8 PASS; <= 1e-6 WARNING,lambda=0.01; mean_abs=7.322813503891123e-15
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,FULL,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_Binance,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_Bitfinex,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_BitMEX,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_Bitstamp,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_Coinbase,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_KuCoin,,original run diagnostics status,Using requested baseline pivot-change definition.
+ORIG_DIAG_001,Original diagnostics: main_contrast_pivot_baseline_source,PASS,INFO,EXCL_OKX,,original run diagnostics status,Using requested baseline pivot-change definition.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,54967,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,54967,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,54967,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,54967,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,54967,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,51058,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,45033,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,47174,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,38151,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,FULL,47020,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,44846,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,44846,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,44846,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,44846,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,44846,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,42211,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,55154,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,37321,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,46334,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Binance,36971,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,60012,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,60012,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,60012,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,60012,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,60012,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,55073,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,39988,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,49833,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,32372,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitfinex,49520,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,77851,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,77851,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,77851,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,77851,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,77851,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,70903,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,22149,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,64840,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,17430,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_BitMEX,64537,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,57818,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,57818,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,57818,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,57818,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,57818,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,53138,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,42182,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,48011,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,34050,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Bitstamp,47774,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,72969,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,72969,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,72969,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,72969,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,72969,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,66468,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,27031,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,60620,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,20826,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_Coinbase,59861,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,64402,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,64402,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,64402,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,64402,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,64402,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,58887,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,35598,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,53492,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,28165,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_KuCoin,53034,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,65773,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,65773,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,65773,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,65773,>= 1000 PASS; >0 WARNING,shock_type=inflate_only; delta_w=2.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,65773,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=-0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,60304,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=0.5; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,34227,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,54657,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=1.0; lock_in=1.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,27074,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=0.
+EVENT_001,Sufficient effective event count,PASS,INFO,EXCL_OKX,54254,>= 1000 PASS; >0 WARNING,shock_type=reallocate_total_fixed; delta_w=2.0; lock_in=1.

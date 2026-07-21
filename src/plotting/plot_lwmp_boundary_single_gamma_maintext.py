@@ -5,8 +5,8 @@
 #
 # INPUT
 #   Preferred existing bins CSV (auto-detect one of these):
-#     1) D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_bins_maxshare.csv
-#     2) D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_bins_maxshare_mid.csv
+#     1) <PROJECT_ROOT>\experiments_dvonly\pivot_boundary_curve_bins_maxshare.csv
+#     2) <PROJECT_ROOT>\experiments_dvonly\pivot_boundary_curve_bins_maxshare_mid.csv
 #     3) any CSV under experiments_dvonly whose name contains:
 #        "pivot_boundary_curve_bins" and ".csv"
 #
@@ -15,7 +15,7 @@
 #     shock_type, gamma, max_share_mid, n, k, pivot_rate, ci_lo, ci_hi
 #
 # OUTPUT
-#   D:\cilck here\2代目\experiments_dvonly\maintext_figs\
+#   <PROJECT_ROOT>\experiments_dvonly\maintext_figs\
 #     - Fig_LWMP_boundary_single_gamma1_inflate_only.png
 #     - lwmp_boundary_single_gamma1_inflate_only_used_data.csv
 #     - lwmp_boundary_single_gamma1_inflate_only_runinfo.txt
@@ -33,7 +33,7 @@ import time
 # -----------------------------
 # USER CONFIG
 # -----------------------------
-ROOT = Path(r"D:\cilck here\2代目")
+ROOT = Path(__file__).resolve().parents[2]
 BINS_DIR = ROOT / "experiments_dvonly"
 
 OUT_DIR = ROOT / "experiments_dvonly" / "maintext_figs"

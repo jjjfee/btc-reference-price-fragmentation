@@ -1,0 +1,26 @@
+{
+  "sample": "ETHUSD 2021-2022 matched sample",
+  "start": "2021-01-01 00:00:00+00:00",
+  "end": "2022-12-31 23:59:00+00:00",
+  "calendar_minutes": 1051200,
+  "minimum_valid_exchanges_per_minute": 3,
+  "valid_minutes_at_least_3": 1051200,
+  "share_at_least_3_valid": 1.0,
+  "valid_minutes_at_least_5": 1050966,
+  "share_at_least_5_valid": 0.9997773972602739,
+  "valid_minutes_all_7": 938607,
+  "share_all_7_valid": 0.8928909817351598,
+  "all_exchange_common_coverage_longest_start": "2021-05-19 00:00:00+00:00",
+  "all_exchange_common_coverage_longest_end": "2021-05-20 21:11:00+00:00",
+  "all_exchange_common_coverage_longest_minutes": 2712,
+  "largest_continuous_usable_start": "2021-01-01 00:00:00+00:00",
+  "largest_continuous_usable_end": "2022-12-31 23:59:00+00:00",
+  "largest_continuous_usable_minutes": 1051200,
+  "selected_sample_used_for_replication": "matched_2021_2022",
+  "supplemental_window_identified_but_not_used_for_main_results": {
+    "start": "2021-01-01 00:00:00+00:00",
+    "end": "2022-12-31 23:59:00+00:00",
+    "minutes": 1051200,
+    "rule": "longest continuous run with at least 3 valid venues"
+  }
+}

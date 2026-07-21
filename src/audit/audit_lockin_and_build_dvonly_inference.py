@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # =========================
 # Paths (edit if needed)
 # =========================
-BASE = Path(r"D:\cilck here\2代目")
+BASE = Path(__file__).resolve().parents[2]
 
 EVENT = BASE / "experiments_dvonly" / "dvon_injection_shift_samples.csv"
 PANEL = BASE / "hhi_panel" / "btc_1m_panel_with_hhi.csv"

@@ -26,7 +26,7 @@ Observed lock-in state:
 Input
 -----
 Default input directory:
-    D:/cilck here/2代目/dv_ready_2021_2022/
+    <PROJECT_ROOT>/dv_ready_2021_2022/
 
 Expected files:
     BTCUSD_1m_<Exchange>_2021_2022_with_DV.csv
@@ -42,7 +42,7 @@ The script tries to detect:
 Output
 ------
 Default output directory:
-    D:/cilck here/2代目/experiments_price_displacement_audit/
+    <PROJECT_ROOT>/outputs/robustness/price_displacement/
 
 Main outputs:
     - price_displacement_audit_events_lambda_*.csv.gz
@@ -424,7 +424,7 @@ def safe_lambda_name(lam: float) -> str:
 def run_audit(args: argparse.Namespace) -> None:
     root = Path(args.root)
     data_dir = Path(args.data_dir) if args.data_dir else root / "dv_ready_2021_2022"
-    out_dir = Path(args.out_dir) if args.out_dir else root / "experiments_price_displacement_audit"
+    out_dir = Path(args.out_dir) if args.out_dir else root / "outputs" / "robustness" / "price_displacement"
     fig_dir = out_dir / "figures"
     table_dir = out_dir / "tables"
     event_dir = out_dir / "event_level"
@@ -716,8 +716,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     parser.add_argument(
         "--root",
-        default=r"D:/cilck here/2代目",
-        help="Project root folder. Default: D:/cilck here/2代目",
+        default=str(Path(__file__).resolve().parents[2]),
+        help="Project root folder (default: inferred repository root)",
     )
     parser.add_argument(
         "--data-dir",
@@ -728,7 +728,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out-dir",
         default=None,
-        help="Output directory. Default: <root>/experiments_price_displacement_audit",
+        help="Output directory. Default: <root>/outputs/robustness/price_displacement",
     )
     parser.add_argument(
         "--lambdas",

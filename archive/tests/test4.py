@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_path = r"D:\cilck here\2代目\experiments_dvonly\dvon_injection_shift_samples.csv"
+csv_path = str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/dvon_injection_shift_samples.csv"))
 
 # 1) 读入
 df = pd.read_csv(csv_path, low_memory=False)

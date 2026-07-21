@@ -1,0 +1,2 @@
+over_half_spell_count,spell_duration_median,spell_duration_p95,spell_duration_p99,max_spell_minutes,spells_ge_60_minutes,spells_ge_360_minutes,spells_ge_1440_minutes
+198995,2.0,9.0,21.0,524,256,1,0

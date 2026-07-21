@@ -10,7 +10,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-BASE = Path(r"D:\cilck here\2代目")
+BASE = Path(__file__).resolve().parents[2]
 AGG_PATH = BASE / "agg_ready" / "btc_2021_2022_agg_prices.csv"
 HHI_PATH = BASE / "experiments" / "weight_concentration_minute_level.csv"
 

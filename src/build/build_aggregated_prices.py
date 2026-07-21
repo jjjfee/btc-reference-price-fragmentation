@@ -13,11 +13,11 @@
 #     - p_usd_scaled    : 已对齐尺度的美元价格（非常关键）
 #     - DV_usd          : 统一口径的美元交易额权重（或合约名义量权重）
 #   这些文件应该在：
-#     D:\cilck here\2代目\dv_ready_2021_2022\
+#     <PROJECT_ROOT>\dv_ready_2021_2022\
 #
 # 运行完会输出什么？
 #   输出目录：
-#     D:\cilck here\2代目\agg_ready\
+#     <PROJECT_ROOT>\agg_ready\
 #   输出文件：
 #     1) btc_2021_2022_agg_prices.csv
 #     2) agg_data_quality_report.xlsx
@@ -28,7 +28,7 @@ import pandas as pd
 import numpy as np
 
 # ========= 路径（一般不用改） =========
-BASE_DIR = Path(r"D:\cilck here\2代目")
+BASE_DIR = Path(__file__).resolve().parents[2]
 INPUT_DIR = BASE_DIR / "dv_ready_2021_2022"
 OUT_DIR = BASE_DIR / "agg_ready"
 OUT_DIR.mkdir(parents=True, exist_ok=True)

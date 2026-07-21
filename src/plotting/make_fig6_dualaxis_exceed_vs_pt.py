@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ROOT  = r"D:\cilck here\2代目"
+ROOT  = str(Path(__file__).resolve().parents[2])
 PANEL = os.path.join(ROOT, "hhi_panel", "btc_1m_panel_with_hhi.csv")
 INJ   = os.path.join(ROOT, "experiments", "injection_shift_samples.csv")
-OUTDIR = os.path.join(ROOT, "paper_outputs_frl")
+OUTDIR = os.path.join(ROOT, "outputs", "main_text", "figures")
 os.makedirs(OUTDIR, exist_ok=True)
 
 OUTFIG = os.path.join(OUTDIR, "Figure6_DualAxis_LWMP_exceed_vs_VWAP_PT_p95_by_HHIquintile.png")

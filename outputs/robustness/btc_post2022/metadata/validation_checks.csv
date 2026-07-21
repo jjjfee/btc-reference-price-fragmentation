@@ -1,0 +1,14 @@
+check,status,value,detail
+weights_normalize_to_one,PASS,6.661338147750939e-16,Maximum absolute deviation of row shares from one.
+max_share_in_unit_interval,PASS,"0.167947,0.99602",Minimum and maximum max_share.
+lockin_pivot_is_dominant,PASS,0,Violations of pivot==dominant when max_share>0.5.
+lwmp_lockin_passthrough_theory,PASS,1.1024514634527804e-13,Maximum |median LWMP kappa - 1| across lock-in price shocks.
+bootstrap_uses_utc_blocks,PASS,"1,7",Bootstrap summaries are grouped by UTC block_days.
+manual_vwap_lwmp_recalculation,PASS,vwap_max=0;lwmp_max=0,Manual scalar recomputation on representative valid minutes.
+output_audit:btc_post2022_lockin_summary.csv,PASS,rows=1;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_lockin_summary.csv
+output_audit:btc_post2022_spell_summary.csv,PASS,rows=1;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_spell_summary.csv
+output_audit:btc_post2022_pivot_bins.csv,PASS,rows=360;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_pivot_bins.csv
+output_audit:btc_post2022_block_bootstrap.csv,PASS,rows=8;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_block_bootstrap.csv
+output_audit:btc_post2022_vwap_proximity_bins.csv,PASS,rows=30;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_vwap_proximity_bins.csv
+output_audit:btc_post2022_passthrough_summary.csv,PASS,rows=8;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_post2022_passthrough_summary.csv
+output_audit:btc_baseline_vs_post2022_comparison.csv,PASS,rows=2;missing=0;duplicate_time=0,paper_outputs_el\replication_btc_post2022\results\btc_baseline_vs_post2022_comparison.csv

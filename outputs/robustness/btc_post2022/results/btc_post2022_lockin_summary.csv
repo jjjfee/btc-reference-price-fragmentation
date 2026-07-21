@@ -1,0 +1,2 @@
+valid_minutes,number_of_venues,median_max_share,p95_max_share,share_max_share_gt_0p5,over_half_spell_count,spell_duration_median,spell_duration_p95,max_spell_minutes,spells_ge_60_minutes,spells_ge_360_minutes,spells_ge_1440_minutes
+1460823,7,0.5331033970365602,0.8707901193531955,0.5865926262113891,270824.0,2.0,8.0,7699.0,160.0,81.0,19.0

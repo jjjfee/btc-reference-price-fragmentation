@@ -1,0 +1,27 @@
+{
+  "asset": "ETHUSD",
+  "start_date": "2021-01-01 00:00:00+00:00",
+  "end_date": "2022-12-31 23:59:00+00:00",
+  "seed": 20260712,
+  "event_seed": 20260712,
+  "bootstrap_reps": 5000,
+  "min_exchanges_per_minute": 3,
+  "n_sample_minutes_for_dvonly_events": 100000,
+  "delta_ws": [
+    0.5,
+    1.0,
+    2.0,
+    -0.5
+  ],
+  "shock_types": [
+    "inflate_only",
+    "reallocate_total_fixed"
+  ],
+  "pivot_nbins": 30,
+  "lock_in_definition": "max_share > 0.5",
+  "price_rule": "OHLC4, then HL2, then Close",
+  "bitmex_rule": "quote_or_contract with multiplier 1.0",
+  "combined_index_policy": "audit and benchmark only; excluded from all aggregation",
+  "figure_spec": "shock_type=inflate_only, gamma=1.0",
+  "pooled_headline_dataset": "all DV-only event shocks from sampled valid minutes"
+}

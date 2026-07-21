@@ -10,8 +10,8 @@ import pandas as pd
 import numpy as np
 
 # ========= 你一般不用改 =========
-INPUT_DIR = Path(r"D:\cilck here\btc交易所数据")
-OUTPUT_DIR = Path(r"D:\cilck here\2代目")
+INPUT_DIR = (Path(__file__).resolve().parents[2] / "data" / "external" / "raw" / "btc")
+OUTPUT_DIR = Path(__file__).resolve().parents[2]
 OUT_DV_DIR = OUTPUT_DIR / "dv_ready_2021_2022"
 OUT_DV_DIR.mkdir(parents=True, exist_ok=True)
 
