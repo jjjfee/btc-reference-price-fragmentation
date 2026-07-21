@@ -1,0 +1,8 @@
+exchange,path,time_col,dv_col,price_rule,price_cols
+Binance,dv_ready_2021_2022\BTCUSD_1m_Binance_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+BitMEX,dv_ready_2021_2022\BTCUSD_1m_BitMEX_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+Bitfinex,dv_ready_2021_2022\BTCUSD_1m_Bitfinex_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+Bitstamp,dv_ready_2021_2022\BTCUSD_1m_Bitstamp_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+Coinbase,dv_ready_2021_2022\BTCUSD_1m_Coinbase_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+KuCoin,dv_ready_2021_2022\BTCUSD_1m_KuCoin_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"
+OKX,dv_ready_2021_2022\BTCUSD_1m_OKX_2021_2022_with_DV.csv,time_utc,DV_usd,OHLC4,"Open,High,Low,Close"

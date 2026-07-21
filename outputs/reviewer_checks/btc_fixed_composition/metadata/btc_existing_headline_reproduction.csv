@@ -1,0 +1,10 @@
+metric,expected,reproduced,absolute_error,tolerance,status,source_file
+non_lockin_pivot_change_rate,0.27927641929248886,0.27927641929248886,0.0,1e-10,PASS,experiments_dvonly\audit_lockin\audit_lockin_summary.csv
+lockin_pivot_change_rate,0.06767736821244551,0.06767736821244551,0.0,1e-10,PASS,experiments_dvonly\audit_lockin\audit_lockin_summary.csv
+difference_lockin_minus_nonlockin,-0.21159905108004334,-0.21159905108004334,0.0,1e-10,PASS,experiments_dvonly\audit_lockin\audit_lockin_summary.csv
+rate_ratio_lockin_over_nonlockin,0.24233112263433296,0.24233112263433296,0.0,1e-10,PASS,experiments_dvonly\audit_lockin\audit_lockin_summary.csv
+base_minute_count,100000.0,100000.0,0.0,0.0,PASS,experiments_dvonly\dvon_injection_shift_samples.csv
+event_count,800000.0,800000.0,0.0,0.0,PASS,experiments_dvonly\dvon_injection_shift_samples.csv
+event_key_mismatch_count,0.0,0.0,0.0,0.0,PASS,experiments_dvonly\dvon_injection_shift_samples.csv
+share_before_max_abs_diff,0.0,4.440892098500626e-16,4.440892098500626e-16,1e-12,PASS,experiments_dvonly\dvon_injection_shift_samples.csv
+share_after_max_abs_diff,0.0,3.219646771412954e-15,3.219646771412954e-15,1e-12,PASS,experiments_dvonly\dvon_injection_shift_samples.csv

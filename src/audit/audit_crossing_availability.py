@@ -3,8 +3,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-PANEL = Path(r"D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv")
-OUTDIR = Path(r"D:\cilck here\2代目\experiments_dvonly\audit_lockin")
+PANEL = (Path(__file__).resolve().parents[2] / Path("hhi_panel/btc_1m_panel_with_hhi.csv"))
+OUTDIR = (Path(__file__).resolve().parents[2] / Path("experiments_dvonly/audit_lockin"))
 OUTDIR.mkdir(parents=True, exist_ok=True)
 
 THR = 0.5

@@ -1,0 +1,16 @@
+root,<PROJECT_ROOT>
+data_dir,<PROJECT_ROOT>\dv_ready_2021_2022
+out_dir,<PROJECT_ROOT>\experiments_price_displacement_audit
+n_exchange_files,7
+exchanges,"Binance,BitMEX,Bitfinex,Bitstamp,Coinbase,KuCoin,OKX"
+n_minutes_loaded,1051200
+n_minutes_after_filter,1051200
+min_exchanges,3
+lockin_threshold,0.5
+lambdas,"0.001,-0.001,0.005,-0.005,0.01,-0.01"
+write_event_level,False
+definition_lockin,max_share > 0.5
+dominant_venue,exchange with largest observed DV_usd share
+weight_definition,"observed DV_usd, fixed under price displacement"
+price_displacement,p_dom_prime = p_dom * (1 + lambda); other venue prices unchanged
+pass_through,kappa = delta benchmark / (lambda * p_dom)

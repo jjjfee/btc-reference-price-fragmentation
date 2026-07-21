@@ -131,9 +131,9 @@ def plot_summary(df_sum: pd.DataFrame, outdir: Path, metric: str, scheme: str):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--samples", default=r"D:\cilck here\2代目\experiments_dvonly\dvon_injection_shift_samples.csv")
-    ap.add_argument("--panel", default=r"D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv")
-    ap.add_argument("--outdir", default=r"D:\cilck here\2代目\experiments_dvonly\subsample_robustness")
+    ap.add_argument("--samples", default=str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/dvon_injection_shift_samples.csv")))
+    ap.add_argument("--panel", default=str(Path(__file__).resolve().parents[2] / Path("hhi_panel/btc_1m_panel_with_hhi.csv")))
+    ap.add_argument("--outdir", default=str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/subsample_robustness")))
     ap.add_argument("--metric", default="max_share", choices=["max_share", "HHI_roll", "HHI"])
     ap.add_argument("--threshold", type=float, default=0.5)
     ap.add_argument("--scheme", default="year", choices=["year", "halfyear", "quarter", "month"])

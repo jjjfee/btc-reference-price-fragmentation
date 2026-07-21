@@ -1,6 +1,6 @@
 import pandas as pd
 
-path = r"D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_bins.csv"
+path = str(Path(__file__).resolve().parents[2] / Path("experiments_dvonly/pivot_boundary_curve_bins.csv"))
 df = pd.read_csv(path)
 print("shape:", df.shape)
 print("columns:", list(df.columns))

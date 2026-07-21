@@ -1,0 +1,2 @@
+valid_minutes,venue_count,median_max_share,p95_max_share,p99_max_share,share_max_share_gt_0p5,share_max_share_gt_0p4,share_max_share_gt_0p3,median_HHI,p95_HHI,over_half_spell_count,spell_duration_median,spell_duration_p95,spell_duration_p99,max_spell_minutes,spells_ge_60_minutes,spells_ge_360_minutes,spells_ge_1440_minutes
+1051198,6,0.5272568515613503,0.8293459515699056,0.9206380760607323,0.568680686226572,0.8365017817766015,0.9887880304186272,0.3853167594633635,0.7020935831986121,198995.0,2.0,9.0,21.0,524.0,256.0,1.0,0.0

@@ -1,0 +1,31 @@
+check,status,value,detail
+01_weights_normalize_to_one,PASS,5.551115123125783e-16,Valid-minute normalized weights sum to one.
+02_max_abs_normalization_error_reported,PASS,5.551115123125783e-16,Maximum absolute row-share error.
+03_max_share_in_unit_interval,PASS,"0.19614,0.98617",Minimum and maximum max_share among valid minutes.
+04_lockin_pivot_equals_dominant,PASS,0,Violations when max_share > 0.5.
+05_manual_vwap_recalculation_10_minutes,PASS,0.0,Manual scalar VWAP recomputation.
+06_manual_lwmp_recalculation_10_minutes,PASS,0.0,Manual scalar LWMP recomputation.
+07_lockin_nonlockin_states_checked,PASS,"{""0"": 305575, ""1"": 745625}",Both states present in matched sample.
+08_output_missing_values_checked,WARN,20140,Missing values are expected in full venue panels for unavailable venue minutes; result tables are separately row-counted.
+09_output_duplicate_timestamps_checked,PASS,0,Duplicate time_utc count across CSV outputs that contain time_utc.
+10_input_duplicate_timestamps_checked,PASS,0,Number of input files with duplicated timestamps flagged in audit.
+11_abnormal_rows_count_checked,WARN,109408,Invalid price/weight rows in matched-sample processing manifest.
+12_combined_index_excluded_from_venue_list,PASS,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin,OKX",Venue price columns used for aggregation.
+13_combined_index_excluded_from_weights,PASS,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin,OKX",Weight columns used for aggregation.
+14_combined_index_excluded_from_dominant,PASS,0,Dominant exchange values.
+15_combined_index_excluded_from_pivot,PASS,0,Pivot exchange values.
+16_bootstrap_utc_blocks_checked,PASS,"1,7",Bootstrap grouped into 1-day and 7-day UTC blocks.
+17_same_minute_events_not_split,PASS,0,Same-minute perturbation events map to one UTC-day block.
+18_lwmp_lockin_passthrough_theory,PASS,1.1013412404281553e-13,Maximum |median LWMP kappa - 1| in lock-in states.
+19_eth_methods_match_btc_pipeline,PASS,OHLC4_HL2_Close;min3;DVonly;Wilson;UTC blocks;kappa,ETH runner imports/reuses BTC helper implementations and constants.
+20_filtered_minutes_and_reasons_recorded,PASS,paper_outputs_el\replication_eth\metadata\processing_filter_manifest.csv,Processing filter manifest written.
+21_price_volume_inf_checked,PASS,0,Inf values in processed price and weight matrices.
+22_price_volume_negative_checked,PASS,0,Negative values in processed price and weight matrices.
+23_abnormal_zero_values_checked,WARN,109408,"Zero processed weights; NaN is used for missing, zero may reflect zero raw volume if present."
+24_exchange_fields_used_recorded,PASS,"Binance,Bitfinex,BitMEX,Bitstamp,Coinbase,KuCoin,OKX",Input file manifest records price and volume fields.
+25_bitmex_multiplier_checked,PASS,quote_or_contract;1.0,BitMEX quote_or_contract rule and multiplier.
+26_output_file_row_counts_checked,PASS,eth_1m_panel.csv:1051200;eth_1m_panel_with_weights.csv:1051200;eth_1m_panel_with_benchmarks.csv:1051200;eth_lockin_summary.csv:1;eth_spell_summary.csv:1;eth_pivot_bins.csv:360;eth_block_bootstrap.csv:8;eth_vwap_proximity_bins.csv:30;eth_passthrough_summary.csv:8;eth_dominant_exchange_distribution.csv:7;eth_targeted_exclusion_summary.csv:1;btc_eth_core_comparison.csv:3,Rows in generated CSV outputs.
+27_parameter_manifest_consistent,PASS,paper_outputs_el\replication_eth\metadata\parameter_manifest.json,Manifest written from actual arguments.
+28_random_seed_recorded,PASS,20260712,Seed used for bootstrap and event sampling.
+29_results_reproducible_from_runner,PASS,run_eth_replication.py,Single deterministic entrypoint with recorded parameters.
+30_btc_outputs_not_modified,PASS,read_only,ETH runner writes only under paper_outputs_el/replication_eth and run_eth_replication.py.

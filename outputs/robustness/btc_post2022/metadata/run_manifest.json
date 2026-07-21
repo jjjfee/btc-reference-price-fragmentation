@@ -1,0 +1,10 @@
+{
+  "script": "<PROJECT_ROOT>\\run_btc_out_of_sample_replication.py",
+  "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "started_elapsed_seconds": 323.46343755722046,
+  "root": "<PROJECT_ROOT>",
+  "raw_dir": "data\\external\\raw\\btc",
+  "out_dir": "<PROJECT_ROOT>\\paper_outputs_el\\replication_btc_post2022",
+  "status": "complete"
+}

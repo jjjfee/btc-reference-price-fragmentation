@@ -13,9 +13,9 @@ import matplotlib.pyplot as plt
 # =========================================================
 # 0) PATH CONFIG
 # =========================================================
-BASE_DIR = Path(r"D:\cilck here\2代目")
+BASE_DIR = Path(__file__).resolve().parents[2]
 DV_DIR = BASE_DIR / "dv_ready_2021_2022"
-OUT_DIR = BASE_DIR / "paper_outputs_frl" / "lockin_persistence_rebuilt"
+OUT_DIR = BASE_DIR / "outputs" / "main_text" / "tables"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 VALID_SUFFIXES = {".csv", ".txt", ".xlsx", ".xls", ".parquet", ".feather"}

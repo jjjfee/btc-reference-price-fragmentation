@@ -6,8 +6,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-INPUT_DIR = Path(r"D:\cilck here\btc交易所数据")
-OUTPUT_DIR = Path(r"D:\cilck here\2代目")
+INPUT_DIR = (Path(__file__).resolve().parents[2] / "data" / "external" / "raw" / "btc")
+OUTPUT_DIR = Path(__file__).resolve().parents[2]
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 CHUNK_SIZE = 200_000

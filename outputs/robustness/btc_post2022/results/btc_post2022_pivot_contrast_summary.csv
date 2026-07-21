@@ -1,0 +1,2 @@
+non_lockin_pivot_change_rate,lockin_pivot_change_rate,difference_lockin_minus_nonlockin,rate_ratio_lockin_over_nonlockin,n_non_lockin_events,n_lockin_events,n_events
+0.26318328559638815,0.07735918846297744,-0.1858240971334107,0.29393655561247806,329584,470416,800000

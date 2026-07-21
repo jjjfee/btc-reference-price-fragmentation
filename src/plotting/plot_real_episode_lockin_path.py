@@ -304,9 +304,9 @@ def plot_episode(df: pd.DataFrame,
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--panel", default=r"D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv")
-    ap.add_argument("--dv-dir", default=r"D:\cilck here\2代目\dv_ready_2021_2022")
-    ap.add_argument("--outdir", default=r"D:\cilck here\2代目\paper_outputs_frl\episodes_lockin")
+    ap.add_argument("--panel", default=str(Path(__file__).resolve().parents[2] / Path("hhi_panel/btc_1m_panel_with_hhi.csv")))
+    ap.add_argument("--dv-dir", default=str(Path(__file__).resolve().parents[2] / Path(r"dv_ready_2021_2022")))
+    ap.add_argument("--outdir", default=str(Path(__file__).resolve().parents[2] / "outputs" / "main_text" / "figures" / "episodes_lockin"))
     ap.add_argument("--threshold", type=float, default=0.5)
     ap.add_argument("--top-k", type=int, default=3)
     ap.add_argument("--min-lockin-minutes", type=int, default=60)

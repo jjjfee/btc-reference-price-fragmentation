@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-PANEL = r"D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv"
+PANEL = str(Path(__file__).resolve().parents[2] / Path("hhi_panel/btc_1m_panel_with_hhi.csv"))
 
 sample = pd.read_csv(PANEL, nrows=5000, low_memory=False)
 print("COLUMNS:", list(sample.columns))

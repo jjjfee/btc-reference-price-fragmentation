@@ -1,0 +1,20 @@
+{
+  "requested_start": "2023-01-01 00:00:00+00:00",
+  "requested_end": null,
+  "selected_start": "2023-01-01 00:00:00+00:00",
+  "selected_end": "2025-10-11 11:02:00+00:00",
+  "selection_rule": "longest continuous UTC-minute run with at least 3 valid exchanges",
+  "minimum_valid_exchanges_per_minute": 3,
+  "selected_calendar_minutes": 1460823,
+  "selected_valid_minutes_rule_count": 1460823,
+  "post2022_raw_latest_timestamp": "2025-10-11 11:02:00+00:00",
+  "all_exchange_columns": [
+    "Binance",
+    "BitMEX",
+    "Bitfinex",
+    "Bitstamp",
+    "Coinbase",
+    "KuCoin",
+    "OKX"
+  ]
+}

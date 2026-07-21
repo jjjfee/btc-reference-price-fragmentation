@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-BASE_DIR = Path(r"D:\cilck here\2代目")
+BASE_DIR = Path(__file__).resolve().parents[2]
 INPUT_DIR = BASE_DIR / "dv_ready_2021_2022"
 OUT_DIR = BASE_DIR / "experiments"
 OUT_DIR.mkdir(parents=True, exist_ok=True)

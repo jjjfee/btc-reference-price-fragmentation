@@ -1,0 +1,23 @@
+{
+  "input": "<PROJECT_ROOT>\\experiments_dvonly\\audit_lockin\\dvonly_inference_dataset.csv",
+  "timestamp_col": "time_utc",
+  "outcome_col": "pivot_changed",
+  "lock_col": null,
+  "share_col": "max_share",
+  "shock_type": null,
+  "delta_w": null,
+  "block_days": 7,
+  "reps_requested": 5000,
+  "reps_completed": 5000,
+  "seed": 20260710,
+  "point_estimates": {
+    "n_events": 800000,
+    "rate_lock_0": 0.27927641929248886,
+    "n_lock_0": 355952,
+    "rate_lock_1": 0.06767736821244551,
+    "n_lock_1": 444048,
+    "difference_lock_minus_nonlock": -0.21159905108004334,
+    "ratio_lock_over_nonlock": 0.24233112263433296,
+    "n_blocks": 105
+  }
+}

@@ -7,10 +7,10 @@ from datetime import datetime
 # ============================================================
 # PATHS
 # ============================================================
-ROOT   = r"D:\cilck here\2代目"
+ROOT   = str(Path(__file__).resolve().parents[2])
 PANEL  = os.path.join(ROOT, "hhi_panel", "btc_1m_panel_with_hhi.csv")
 INJ    = os.path.join(ROOT, "experiments", "injection_shift_samples.csv")
-OUTDIR = os.path.join(ROOT, "paper_outputs_frl")
+OUTDIR = os.path.join(ROOT, "outputs", "main_text", "figures")
 os.makedirs(OUTDIR, exist_ok=True)
 
 TARGET_DELTAS = [0.05, 0.10]

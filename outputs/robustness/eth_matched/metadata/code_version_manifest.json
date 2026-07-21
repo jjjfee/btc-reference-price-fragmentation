@@ -1,0 +1,6 @@
+{
+  "run_eth_replication.py_sha256": "8c6b9e115edfdbba8d1e158f1b28a711243fa634707dfe173f3b4d6181c17095",
+  "git_repository_detected": true,
+  "btc_outputs_policy": "read-only; no BTC result files are written by this runner",
+  "generated_at_epoch": 1783855322.5344515
+}

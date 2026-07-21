@@ -5,29 +5,29 @@
 #   "As concentration rises, VWAP converges toward the dominant venue price."
 #
 # INPUTS
-#   1) D:\cilck here\2代目\hhi_panel\btc_1m_panel_with_hhi.csv
+#   1) <PROJECT_ROOT>\hhi_panel\btc_1m_panel_with_hhi.csv
 #      Required columns:
 #         - time_utc_dt  (or time_utc)
 #         - max_share
 #         - dominant_exchange
 #
-#   2) D:\cilck here\2代目\agg_ready\btc_2021_2022_agg_prices.csv
+#   2) <PROJECT_ROOT>\agg_ready\btc_2021_2022_agg_prices.csv
 #      Required columns:
 #         - time_utc
 #         - P_vwap_DV
 #
-#   3) D:\cilck here\2代目\dv_ready_2021_2022\BTCUSD_1m_<EX>_2021_2022_with_DV.csv
+#   3) <PROJECT_ROOT>\dv_ready_2021_2022\BTCUSD_1m_<EX>_2021_2022_with_DV.csv
 #      Required columns in each file:
 #         - time_utc
 #         - p_usd_scaled
 #
 # OPTIONAL INPUT
-#   4) D:\cilck here\2代目\experiments_dvonly\pivot_boundary_curve_edges_maxshare.csv
+#   4) <PROJECT_ROOT>\experiments_dvonly\pivot_boundary_curve_edges_maxshare.csv
 #      If present, reuse these edges so the x-axis is perfectly mirrored with LWMP boundary plots.
 #
 # OUTPUTS
 #   Written to:
-#     D:\cilck here\2代目\experiments_structure_vwap\
+#     <PROJECT_ROOT>\experiments_structure_vwap\
 #
 #   Files:
 #     - vwap_head_proximity_bins_maxshare.csv
@@ -53,7 +53,7 @@ import matplotlib.pyplot as plt
 # -----------------------------
 # USER CONFIG
 # -----------------------------
-ROOT = Path(r"D:\cilck here\2代目")
+ROOT = Path(__file__).resolve().parents[2]
 
 PANEL_FILE = ROOT / "hhi_panel" / "btc_1m_panel_with_hhi.csv"
 AGG_FILE   = ROOT / "agg_ready" / "btc_2021_2022_agg_prices.csv"

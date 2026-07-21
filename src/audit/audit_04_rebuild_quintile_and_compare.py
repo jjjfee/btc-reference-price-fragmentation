@@ -3,11 +3,11 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-ROOT = Path(r"D:\cilck here\2代目")
+ROOT = Path(__file__).resolve().parents[2]
 
 EVENT_CSV = ROOT / "experiments_dvonly" / "dvon_injection_shift_samples.csv"
 PANEL_CSV = ROOT / "hhi_panel" / "btc_1m_panel_with_hhi.csv"
-XLSX_SUM = Path(r"D:\cilck here\2代目\experiments\DVonly_Injection_By_HHIrollQuintile.xlsx")
+XLSX_SUM = (Path(__file__).resolve().parents[2] / Path("experiments/DVonly_Injection_By_HHIrollQuintile.xlsx"))
 
 
 OUT_REBUILT = ROOT / "experiments_dvonly" / "audit04_rebuilt_quintile_summary.xlsx"

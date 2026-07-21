@@ -1,0 +1,8 @@
+exchange,file_name,path,bytes,time_col,volume_col,price_rule
+Binance,BTCUSD_1m_Binance.csv,data/external/raw/btc/BTCUSD_1m_Binance.csv,585317938,Open time,Volume,OHLC4
+Bitfinex,BTCUSD_1m_Bitfinex.csv,data/external/raw/btc/BTCUSD_1m_Bitfinex.csv,345495655,Open time,Volume,OHLC4
+BitMEX,BTCUSD_1m_BitMEX.csv,data/external/raw/btc/BTCUSD_1m_BitMEX.csv,309762241,Open time,Volume,OHLC4
+Bitstamp,BTCUSD_1m_Bitstamp.csv,data/external/raw/btc/BTCUSD_1m_Bitstamp.csv,438763448,Open time,Volume,OHLC4
+Coinbase,BTCUSD_1m_Coinbase.csv,data/external/raw/btc/BTCUSD_1m_Coinbase.csv,339813545,Open time,Volume,OHLC4
+KuCoin,BTCUSD_1m_KuCoin.csv,data/external/raw/btc/BTCUSD_1m_KuCoin.csv,309912036,Open time,Volume,OHLC4
+OKX,BTCUSD_1m_OKX.csv,data/external/raw/btc/BTCUSD_1m_OKX.csv,400789585,Open time,Volume,OHLC4

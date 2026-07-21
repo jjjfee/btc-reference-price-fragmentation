@@ -1,0 +1,9 @@
+shock_type,delta_w_or_gamma,base_minute_count,attempted_events,admissible_events,rejected_events,rejection_reason,cap_applied_events,pivot_change_count,pivot_change_rate,lock_in_event_count,non_lock_in_event_count,non_lockin_pivot_change_count,non_lockin_pivot_change_rate,lockin_pivot_change_count,lockin_pivot_change_rate
+inflate_only,0.5,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",0,9354,0.09354,54463,45537,8038,0.17651580033818653,1316,0.024163193360630154
+inflate_only,1.0,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",0,14799,0.14799,54463,45537,12112,0.26598150954169136,2687,0.04933624662614986
+inflate_only,2.0,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",0,22156,0.22156,54463,45537,16881,0.3707095329073061,5275,0.09685474542349852
+inflate_only,-0.5,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",0,11839,0.11839,54463,45537,9653,0.21198146562136286,2186,0.04013734094706498
+reallocate_total_fixed,0.5,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",3643,11722,0.11722,54463,45537,9885,0.2170762237301535,1837,0.03372932082331124
+reallocate_total_fixed,1.0,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",7760,18098,0.18098,54463,45537,14232,0.31253705777719215,3866,0.07098397076914603
+reallocate_total_fixed,2.0,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",14956,26985,0.26985,54463,45537,19342,0.42475349715615873,7643,0.14033380460128894
+reallocate_total_fixed,-0.5,100000,100000,100000,0,"none; infeasible positive reallocations are capped, not rejected",0,16067,0.16067,54463,45537,10662,0.23413927136174978,5405,0.09924168701687384

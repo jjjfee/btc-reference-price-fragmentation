@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 
 
-BASE_DIR = Path(r"D:\cilck here\2代目\experiments_dvonly\exclude_binance")
-BASENAME = "dvon_injection_shift_samples__exclude_Binance"
+BASE_DIR = (Path(__file__).resolve().parents[2] / Path("experiments_dvonly/exclude_binance"))
+BASENAME = "dvon_injection_shift_samples"
 
 
 def find_input_file(base_dir: Path, basename: str) -> Path:

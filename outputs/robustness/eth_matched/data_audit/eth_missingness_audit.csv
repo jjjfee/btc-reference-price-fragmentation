@@ -1,0 +1,9 @@
+exchange,file_name,expected_minutes_between_file_start_end,unique_timestamps,missing_minutes,missing_minute_ratio,duplicate_timestamps,ohlc_valid_rows,volume_valid_rows,price_invalid_rows,volume_invalid_rows,inf_price_rows,inf_volume_rows,zero_volume_rows,negative_volume_rows
+Binance,ETHUSD_1m_Binance.csv,4287305,4278673,8632,0.002013386031551289,0,4278673,4246563,0,32110,0,0,32110,0
+Bitfinex,ETHUSD_1m_Bitfinex.csv,4516504,3817215,699289,0.15482970899616164,0,3817215,3817215,0,0,0,0,0,0
+BitMEX,ETHUSD_1m_BitMEX.csv,3782997,3782996,1,2.6434068015385684e-07,0,3782996,3562837,0,220159,0,0,220159,0
+Bitstamp,ETHUSD_1m_Bitstamp.csv,4287980,4287978,2,4.664200859145798e-07,0,4287978,3491625,0,796353,0,0,796353,0
+Coinbase,ETHUSD_1m_Coinbase.csv,4751225,4633225,118000,0.024835700266773307,0,4633225,4633225,0,0,0,0,0,0
+KuCoin,ETHUSD_1m_KuCoin.csv,4090251,3827937,262314,0.06413151662330747,0,3827937,3780186,0,47751,0,0,47751,0
+OKX,ETHUSD_1m_OKX.csv,4075196,4075196,0,0.0,0,4075196,4068013,0,7183,0,0,7183,0
+Combined_Index,ETHUSD_1m_Combined_Index.csv,4751228,4720638,30590,0.006438335520837981,0,4720638,4720637,0,1,0,0,1,0

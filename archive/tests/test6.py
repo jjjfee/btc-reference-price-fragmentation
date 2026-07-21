@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-BASE = Path(r"D:\cilck here\2代目")
+BASE = Path(__file__).resolve().parents[2]
 evt_path = BASE / "experiments_dvonly" / "dvon_injection_shift_samples.csv"
 panel_path = BASE / "hhi_panel" / "btc_1m_panel_with_hhi.csv"
 xlsx_path = BASE / "experiments" / "DVonly_Injection_By_HHIrollQuintile.xlsx"

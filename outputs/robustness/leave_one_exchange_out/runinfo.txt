@@ -1,0 +1,12 @@
+run_timestamp_utc=2026-06-04T05:54:25.321702+00:00
+root=<PROJECT_ROOT>
+input_dir=<PROJECT_ROOT>\dv_ready_2021_2022
+out_dir=<PROJECT_ROOT>\experiments_leave_one_exchange_out
+script_path=<PROJECT_ROOT>\src\audit\run_leave_one_exchange_out_validation.py
+min_venues=3
+sample_events_per_scenario=100000
+seed=20260604
+nbins=10
+write_event_level=True
+diagnostics_pass=True
+excel_path=<PROJECT_ROOT>\experiments_leave_one_exchange_out\tables\leave_one_exchange_out_validation.xlsx

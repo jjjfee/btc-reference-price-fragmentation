@@ -20,10 +20,10 @@
 #       alignment_ci_high    = 1 - old_ci_low
 #
 # INPUT
-#   D:\cilck here\2代目\experiments_structure_vwap\vwap_head_proximity_bins_maxshare.csv
+#   <PROJECT_ROOT>\experiments_structure_vwap\vwap_head_proximity_bins_maxshare.csv
 #
 # OUTPUTS
-#   D:\cilck here\2代目\experiments_structure_vwap\
+#   <PROJECT_ROOT>\experiments_structure_vwap\
 #       - vwap_head_alignment_bins_maxshare.csv
 #       - vwap_head_alignment_runinfo_maxshare.txt
 #       - Fig_vwap_head_alignment_floor_by_maxshare.png
@@ -46,7 +46,7 @@ import matplotlib.ticker as mtick
 # -----------------------------
 # USER CONFIG
 # -----------------------------
-ROOT = Path(r"D:\cilck here\2代目")
+ROOT = Path(__file__).resolve().parents[2]
 IN_DIR = ROOT / "experiments_structure_vwap"
 
 BINS_IN = IN_DIR / "vwap_head_proximity_bins_maxshare.csv"

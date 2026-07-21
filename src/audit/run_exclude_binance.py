@@ -10,9 +10,9 @@
 #   <outdir>/base_minute_metrics__exclude_<...>.csv           (minute-level, N rows)
 #
 # Usage example (Windows):
-#   python "D:\cilck here\2代目\experiments_dvonly\run_exclude_exchange_dvonly.py" ^
-#     --dv-dir "D:\cilck here\2代目\dv_ready_2021_2022" ^
-#     --outdir "D:\cilck here\2代目\experiments_dvonly\exclude_binance" ^
+#   python "<PROJECT_ROOT>\experiments_dvonly\run_exclude_exchange_dvonly.py" ^
+#     --dv-dir "<PROJECT_ROOT>\dv_ready_2021_2022" ^
+#     --outdir "<PROJECT_ROOT>\experiments_dvonly\exclude_binance" ^
 #     --exclude Binance ^
 #     --n-sample-minutes 100000
 # ============================================================

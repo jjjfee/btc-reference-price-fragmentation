@@ -1,180 +1,121 @@
-# When Multi-Venue Benchmarks Become Effectively Concentrated
+# When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets
 
-## Evidence from Fragmented BTCUSD Markets
+This repository contains code, selected outputs, data-source manifests, and validation reports for the current Economics Letters submission. The manuscript is submitted; it is not described here as accepted or published.
 
-This repository accompanies the paper:
+## Research question and contribution
 
-**When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets**
+The paper asks when a formally multi-venue price benchmark becomes effectively concentrated because trading weight is concentrated. It is a benchmark-mapping exercise: synchronized public price-volume observations are mapped through two aggregation rules, not proposed as a regulated or investable index.
 
-本仓库是该论文的复现与输出归档仓库。它用于整理论文相关代码、主文与附录输出、运行说明、诊断材料和外部数据说明。大型原始数据与大型中间文件不直接纳入本仓库。
+- A volume-weighted average price (VWAP) has continuous exposure to every venue price. Holding weights fixed, the dominant venue's pass-through is its weight.
+- A liquidity-weighted median price (LWMP) has a threshold-pivot mechanism. Once one valid venue has more than half of synchronized weight, that venue must be the weighted-median pivot; small weight perturbations may therefore leave the pivot unchanged.
 
----
+## Main BTCUSD sample
 
-## 1. Paper focus
+The baseline panel contains one-minute UTC observations for Binance, Bitfinex, BitMEX, Bitstamp, Coinbase, KuCoin, and OKX from 2021-01-01 through 2022-12-31. A minute is valid with at least three finite, positive-weight venues.
 
-The paper studies effective concentration in formally multi-venue BTCUSD benchmarks. A benchmark may include several venues in its input set while its realized exposure becomes concentrated when trading weights are concentrated.
+| Quantity | Current value |
+|---|---:|
+| Valid minutes | 1,050,207 |
+| All-seven-valid minutes | 1,008,835 |
+| Over-half share, pooled valid sample | 55.4973% |
+| Over-half share, all-seven-valid sample | 54.5047% |
+| Longest pooled over-half spell | 2,982 minutes |
 
-The paper separates three objects:
+The weights are synchronized price-volume proxy shares. Venue source conventions differ. Base-volume venues use venue price times volume; BitMEX is retained under the audited quote-or-contract dollar-volume convention. The handling is recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and the committed reviewer-check input manifest.
 
-1. **Venue coverage**: the exchanges included in the benchmark input set.
-2. **Cross-venue price-weight state**: the observed venue-level prices and trading weights at each minute.
-3. **Reference price**: the output produced by an aggregation rule.
+## Pooled DV-only design and headline result
 
-The main claim is that trading concentration changes how a benchmark rule maps the cross-venue state into a reference price, even when the nominal venue set is unchanged.
+The design samples 100,000 valid minutes without replacement using seed 42. At each minute it selects one valid venue uniformly; that venue is held fixed across two shock types and four magnitudes. This produces 100,000 × 8 = 800,000 equally weighted events. Positive total-preserving shocks are capped at feasibility boundaries rather than rejected.
 
-The empirical application uses minute-level BTCUSD data from seven exchanges over 2021-2022. The analysis focuses on two rule-specific mechanisms:
+| Event-level quantity | Exact value |
+|---|---:|
+| Non-majority pivot-change rate | 0.27927641929248886 |
+| Majority pivot-change rate | 0.06767736821244551 |
+| Majority minus non-majority | -0.21159905108004334 |
+| Rate ratio | 0.24233112263433296 |
 
-- **VWAP**: continuous dominant-venue exposure. As the dominant venue's weight rises, the residual cross-venue component of VWAP becomes less influential.
-- **LWMP**: threshold-pivot lock-in. Once a single venue carries more than half of total weight, it becomes the weighted-median pivot.
+The committed source table is `outputs/main_text/tables/headline_pivot_change_rates.csv`. Event construction is documented by `outputs/reviewer_checks/btc_fixed_composition/metadata/btc_event_formula_manifest.md` and Appendix L.
 
-The design is a benchmark-mapping exercise. It does not estimate the full market-equilibrium effect of concentration. It holds observed venue prices fixed where appropriate and studies how aggregation rules convert observed prices and weights into benchmark outputs.
+## Fixed composition and structural exclusion
 
----
+Restricting to the 1,008,835 all-seven-valid minutes gives an over-half share of 0.5450465140483826, pivot-change rates of 0.27671179480422514 and 0.06934753869599544, a difference of -0.2073642561082297, and a maximum spell of 787 minutes. The seed-42 block intervals for that difference are:
 
-## 2. Data scope and convention
+- one-day: [-0.2124239332905306, -0.2023178773660607]
+- seven-day: [-0.21658581040289163, -0.19744025986563804]
 
-The raw data are obtained from the public Kaggle dataset:
+The six-base-volume specification excludes BitMEX and requires all six remaining venues to be valid. Its over-half share is 0.7772763516302911; its pivot-change rates are 0.2660623267459537 and 0.0615629105804158, for a difference of -0.2044994161655379. These are robustness checks, not replacements for the paper's baseline definition.
 
-**Comprehensive BTCUSD 1m Data**  
-https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data
+## Other validations
 
-The raw Kaggle files are not redistributed in this repository. Users should obtain the raw files directly from Kaggle and then use the scripts and manifests in this repository to reproduce the processed panel and paper outputs.
+- The BTCUSD post-2022 replication contains 1,460,823 valid minutes, an over-half share of 0.5865926262113891, and a pivot-change difference of -0.1858240971334107.
+- The matched 2021–2022 ETHUSD replication has an over-half share of 0.709308409436834 and a pivot-change difference of -0.16147078883213373.
+- Targeted ETH exclusions, leave-one-exchange-out results, fixed-weight price-displacement results, and their audit reports are under `outputs/robustness/`.
+- The baseline dependence-robust summaries under `outputs/robustness/bootstrap_1day/` and `outputs/robustness/bootstrap_7day/` use seed 20260710. Appendix L's all-seven intervals above use its documented seed-42 rerun; both provenance records are retained rather than conflated.
+- The BTC fixed-composition gate reports exactly 29 PASS / 0 WARN / 0 FAIL in `outputs/reviewer_checks/btc_fixed_composition/metadata/validation_checks.csv`.
 
-The analysis uses synchronized BTCUSD price-volume inputs from:
+## Appendix A–L map
 
-- Binance
-- Bitfinex
-- BitMEX
-- Bitstamp
-- Coinbase
-- KuCoin
-- OKX
+| Appendix | Topic | Repository location |
+|---|---|---|
+| A | Perturbation and classification sensitivity | `outputs/appendix/A/` |
+| B | Subsample and temporal-dependence validation | `outputs/appendix/B/`, `outputs/robustness/bootstrap_1day/`, `outputs/robustness/bootstrap_7day/` |
+| C | Structural-exclusion validation | `outputs/appendix/C/` |
+| D | LWMP majority-pivot guarantee | `outputs/appendix/D/` |
+| E | Supplementary VWAP evidence | `outputs/appendix/E/` |
+| F | Majority-state implementation consistency | `outputs/appendix/F/` |
+| G | Fixed-weight dominant-price displacement | `outputs/appendix/G/` |
+| H | Leave-one-exchange-out validation | `outputs/robustness/leave_one_exchange_out/` |
+| I | BTCUSD post-2022 replication | `outputs/robustness/btc_post2022/` |
+| J | Matched ETHUSD replication | `outputs/robustness/eth_matched/` |
+| K | ETHUSD targeted venue exclusions | `outputs/robustness/eth_exclude_binance/` |
+| L | Event construction and fixed-composition BTC checks | `outputs/reviewer_checks/btc_fixed_composition/` |
 
-Because public OHLCV files differ in product conventions and volume units across venues, the synchronized inputs are treated as BTCUSD price-volume proxies for benchmark-mapping purposes. BitMEX is retained after volume-unit diagnostics and handled under the quote-or-contract dollar-volume convention rather than as a base-volume spot venue. The study is therefore a harmonized aggregation-rule exercise, not the construction of a regulated investable index.
+See `OUTPUT_MANIFEST.md`, `docs/runinfo/appendix_code_map.md`, and `outputs/metadata/output_manifest.json` for script- and file-level mappings.
 
-All reported timestamps are handled in UTC.
+## Data download and redistribution
 
----
+The raw BTCUSD and ETHUSD data must be downloaded directly from Kaggle. They are not redistributed here:
 
-## 3. Manuscript output map
+- [Comprehensive BTCUSD 1m Data](https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data)
+- [Ethereum ETH, 7 Exchanges, 1m Full Historical Data](https://www.kaggle.com/datasets/imranbukhari/comprehensive-ethusd-1m-data/data)
 
-### Main text
+Expected filenames, columns, sample dates, access dates, conventions, available hashes, and downstream generators are recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and `data/external/manifests/kaggle_ethusd_manifest.md`. Create the untracked raw-data directories described there after download.
 
-The current main text relies primarily on:
+## Environment
 
-- **Table 1**: observed-market persistence of the over-half state.
-- **LWMP evidence**: one-half boundary and pivot lock-in.
-- **VWAP evidence**: supplementary perturbation-tail diagnostics consistent with continuous dominant-venue exposure.
-- **Settlement implication**: fixed-weight dominant-venue price-displacement pass-through.
-
-### Appendix
-
-The appendix is organized as:
-
-- **Appendix A**: definition, measurement, and threshold validation.
-- **Appendix B**: year-based subsample validation.
-- **Appendix C**: structural-exclusion validation.
-- **Appendix D**: LWMP mechanism audit.
-- **Appendix E**: supplementary VWAP evidence.
-- **Appendix F**: observed-state validation of LWMP lock-in.
-- **Appendix G**: settlement-use-case fixed-weight price-displacement audit.
-
----
-
-## 4. Repository structure
-
-```text
-btc-reference-price-fragmentation/
-├─ src/
-│  ├─ build/          # data construction and panel-building scripts
-│  ├─ experiments/    # benchmark perturbation and robustness scripts
-│  ├─ audit/          # mechanism audits and validation checks
-│  └─ plotting/       # paper figure/table generation scripts
-├─ scripts/           # execution helpers and final-run scripts
-├─ outputs/
-│  ├─ main_text/      # figures and tables used in the main text
-│  ├─ appendix/       # appendix figures and tables
-│  └─ metadata/       # output metadata and provenance notes
-├─ docs/
-│  ├─ runinfo/        # run logs and configuration notes
-│  └─ diagnostics/    # diagnostic summaries
-├─ data/
-│  └─ external/
-│     └─ manifests/   # source-data manifests; raw data are not redistributed
-└─ archive/           # exploratory, duplicate, or deprecated scripts
-```
-
-Files under `archive/` are retained for transparency and development history. They are not part of the final replication path unless explicitly referenced by a run note.
-
----
-
-## 5. Python environment
-
-Install the minimal Python dependencies from:
+Python 3.10 or newer is recommended. From the repository root:
 
 ```bash
-pip install -r requirements.txt
+python -m venv .venv
+python -m pip install -r requirements.txt
 ```
 
-The expected core dependencies are:
+Core numerical work uses NumPy and pandas; plotting and PDF output additionally use Matplotlib, Pillow, and ReportLab. Parquet input uses PyArrow.
 
-```text
-numpy
-pandas
-matplotlib
-openpyxl
-scipy
-mpmath
-tqdm
-numba
-```
+## Recommended execution order
 
-`openpyxl` is required for Excel input/output through pandas, even when it is not explicitly imported in individual scripts.
+1. Download and verify the external files using the two source-data manifests.
+2. Build venue-level BTC inputs with `src/build/make_dv_2021_2022.py`; then build aggregate and concentration panels with the remaining scripts under `src/build/`.
+3. Generate the baseline DV-only events with `src/experiments/run_dv_only_injection_experiments.py` and audit them with `src/audit/audit_lockin_and_build_dvonly_inference.py`.
+4. Run the one-day and seven-day block bootstrap with `src/experiments/run_day_block_bootstrap.py`.
+5. Run `src/audit/run_btc_fixed_composition_checks.py` for the exact headline gate, all-seven-valid results, six-base-volume exclusion, and reviewer checks.
+6. Run the Appendix H–K entry points under `src/audit/` and `src/experiments/` if the corresponding external raw or processed data are available.
+7. Validate committed artifacts with `scripts/final/validate_selected_outputs.py`.
 
----
+Exact commands, inputs, outputs, seeds, and troubleshooting are in `REPLICATION.md`.
 
-## 6. Local path configuration
+## Reproducibility scope and cost
 
-Some scripts were originally run from a local Windows project directory and may contain default absolute paths such as `D:\cilck here\...`. External users should replace these default paths with their own local raw-data and project-output paths before running the workflow.
+The exact-value validator and `--help` checks run directly from a clone and use only committed files. Figure/table summaries and reports are also provided. Raw-to-panel builds and event-level experiments depend on external files totaling multiple gigabytes and can require substantial memory, disk, and compute; they are not one-click lightweight tests. Large raw files, venue panels, merged event samples, and bootstrap draws are intentionally omitted and ignored. The repository preserves their source and run metadata instead.
 
-Where a script provides command-line arguments such as `--root`, `--data-dir`, or `--out-dir`, those arguments can be used instead of editing the script directly. For scripts without command-line path arguments, users should adjust the path block near the top of the script before execution.
+## Known limitations
 
-In practice, users should first download the Kaggle CSV files to their chosen raw-data directory, then set the script input and output paths so that the generated processed files are written to the corresponding local project directory.
+- Public OHLCV product and volume conventions are heterogeneous; results should be interpreted as a harmonized benchmark-mapping exercise.
+- The submitted manuscript reports rounded values; committed CSVs retain available precision.
+- Appendix B's baseline block-bootstrap run and Appendix L's fixed-composition rerun use different documented seeds. Their close but non-identical intervals should not be treated as the same run.
+- Saved VWAP tail summaries arise from related but not identical constructions; labels and manifests identify the relevant construction.
+- Full reproduction requires third-party data availability and adequate local resources.
 
----
+## License and citation
 
-## 7. Reproduction logic
-
-The full workflow has four stages:
-
-1. **Prepare venue-level inputs**  
-   Harmonize exchange-level BTCUSD minute data and construct dollar-volume proxies.
-
-2. **Build benchmark panels**  
-   Construct VWAP, LWMP, concentration measures, dominant-venue shares, and related panel variables.
-
-3. **Run mechanism and validation audits**  
-   Execute the dollar-volume-only perturbation exercises, observed-state validation, structural-exclusion checks, and settlement pass-through audit.
-
-4. **Generate paper outputs**  
-   Create the tables and figures used in the main text and appendix.
-
-Large processed files are not stored directly in this repository. The manifests and run notes describe how those files are generated and where they enter the workflow.
-
----
-
-## 8. Data and output policy
-
-- Raw Kaggle files are not redistributed.
-- Large intermediate files are excluded from the repository.
-- Selected final tables, figures, metadata, and run notes are retained for transparency.
-- Source-data manifests document the external data inputs and access information.
-- The code is intended to support replication of the paper's benchmark-mapping results, not to provide production benchmark infrastructure.
-
----
-
-## 9. License and citation
-
-The code in this repository is released under the MIT License. See `LICENSE`.
-
-Citation metadata are provided in `CITATION.cff`. If you use this repository, cite the accompanying paper and this code archive.
+Code and repository materials are released under the MIT License in `LICENSE`. Citation metadata are in `CITATION.cff`. No DOI or journal-publication claim is made.

@@ -1,0 +1,2 @@
+valid_minutes,share_max_share_gt_0p5,spell_count,median_spell,p95_spell,p99_spell,maximum_spell,spells_ge_60_minutes,spells_ge_360_minutes,spells_ge_1440_minutes,spells_terminated_by_availability_interruption
+1024633,0.7772763516302911,136254,2.0,19.0,54.0,1365,1161,52,0,14957

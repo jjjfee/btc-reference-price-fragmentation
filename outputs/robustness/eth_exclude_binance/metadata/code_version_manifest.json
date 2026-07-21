@@ -1,0 +1,8 @@
+{
+  "run_eth_exclude_binance.py_sha256": "090fa53065ba0048288f09fc20916bc3116b182599e95baf56798fed13f49e7b",
+  "run_eth_replication.py_sha256": "2a8fb8b79d57495a319ef63ccef0f97d3474fd77de918ec0b85f3301d3809010",
+  "run_btc_out_of_sample_replication.py_sha256": "d85e4d0276642662d372abcc98efc841587c1827edf810d4d78c2b5c65bc0456",
+  "git_repository_detected": true,
+  "btc_outputs_policy": "read-only; no BTC result files are written by this runner",
+  "generated_at_epoch": 1783857422.0593536
+}

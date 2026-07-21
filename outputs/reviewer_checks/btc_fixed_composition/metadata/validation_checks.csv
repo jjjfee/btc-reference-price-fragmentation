@@ -1,0 +1,30 @@
+check,status,value,detail
+01_original_headline_exact_reproduction,PASS,0,Four headline values match within 1e-10 and the event file matches row by row.
+02_original_800000_event_count,PASS,800000,"Original event count equals 100,000 x 8."
+03_base_minute_count_confirmed,PASS,100000,Base-minute count recovered from code and regenerated sample.
+04_each_shock_cell_event_count,PASS,"[{""attempted_events"":100000,""delta_w_or_gamma"":0.5,""shock_type"":""inflate_only""},{""attempted_events"":100000,""delta_w_or_gamma"":1.0,""shock_type"":""inflate_only""},{""attempted_events"":100000,""delta_w_or_gamma"":2.0,""shock_type"":""inflate_only""},{""attempted_events"":100000,""delta_w_or_gamma"":-0.5,""shock_type"":""inflate_only""},{""attempted_events"":100000,""delta_w_or_gamma"":0.5,""shock_type"":""reallocate_total_fixed""},{""attempted_events"":100000,""delta_w_or_gamma"":1.0,""shock_type"":""reallocate_total_fixed""},{""attempted_events"":100000,""delta_w_or_gamma"":2.0,""shock_type"":""reallocate_total_fixed""},{""attempted_events"":100000,""delta_w_or_gamma"":-0.5,""shock_type"":""reallocate_total_fixed""}]","Eight cells each contain 100,000 events."
+05_all_events_trace_to_base_minutes,PASS,100000,Every event carries the original base-sample selection order.
+06_all_seven_minutes_really_all_valid,PASS,1008835,"Every selected all-seven row has finite price, finite weight, and positive weight at all seven venues."
+07_six_basevolume_minutes_really_all_valid,PASS,1024633,Every selected six-base-volume row has all six included venues valid; BitMEX is absent by design.
+08_weights_normalize_to_one,PASS,6.661338147750939e-16,Maximum per-minute normalized-share sum error across baseline and six-base-volume checks.
+09_max_share_in_unit_interval,PASS,"[0.18588630652738283, 0.9945077405352594]",Baseline valid-minute max_share range.
+10_overhalf_pivot_equals_dominant,PASS,0,Mismatch count under max_share > 0.5.
+11_combined_index_excluded,PASS,"[""Binance"",""Bitfinex"",""BitMEX"",""Bitstamp"",""Coinbase"",""KuCoin"",""OKX""]",Only the seven named venue inputs enter the calculation.
+12_all7_vwap_matches_old_baseline,PASS,7.275957614183426e-12,Maximum absolute VWAP difference on all-seven-valid minutes.
+13_all7_lwmp_matches_old_baseline,PASS,3.637978807091713e-12,Maximum absolute LWMP difference on all-seven-valid minutes.
+14_manual_recalculation_20_all7_minutes,PASS,"{""max_abs_hhi_difference"":1.6653345369377348e-16,""max_abs_lwmp_difference"":0.0,""max_abs_max_share_difference"":1.1102230246251565e-16,""max_abs_vwap_difference"":1.4551915228366852e-11,""minutes_checked"":20,""pivot_mismatch_count"":0}","Independent scalar recomputation of VWAP, LWMP, max_share, HHI, and pivot."
+15_fixed_composition_never_mixes_active_sets,PASS,3,Each row is keyed by one exact active venue set.
+16_bootstrap_uses_UTC_blocks,PASS,"[1,7]",Blocks are constructed from UTC-floored event timestamps.
+17_same_minute_events_not_split,PASS,block=floor((UTC_day-origin)/block_days),"Block assignment is a deterministic function of the minute timestamp, so all eight events stay together."
+18_seed_recorded,PASS,42,Recovered from the original event generator; new sensitivity bootstraps use the requested event seed.
+19_no_duplicate_timestamps_in_minute_outputs,PASS,0,Checked the calendar audit and base-minute sample.
+20_no_unexpected_missing_values_in_core_tables,PASS,0,Threshold-ineligible DV/bootstrap cells in the unified comparison are intentionally blank and labeled by DV-only status.
+21_existing_BTC_outputs_unmodified,PASS,[],Size/mtime snapshots of existing BTC result trees are unchanged.
+22_existing_ETH_outputs_unmodified,PASS,[],Size/mtime snapshot of the ETH replication tree is unchanged.
+23_Word_PDF_TXT_manuscripts_unmodified,PASS,[],All pre-existing .docx/.pdf/.txt files outside the new output directory are unchanged.
+24_single_entry_reproduction,PASS,run_btc_fixed_composition_checks.py,The complete workflow is callable from this one script.
+25_validation_status_domain,PASS,PASS|WARN|FAIL,Status values are restricted to the requested domain.
+26_recomputed_all7_structure_matches_old,PASS,"{""HHI_max_abs_diff"":1.1102230246251565e-16,""max_share_max_abs_diff"":1.1102230246251565e-16}",Old concentration values match the raw-input recomputation on all-seven-valid minutes.
+27_exclude_BitMEX_leave_one_out_crosscheck,PASS,"{""definition_note"":""Old leave-one-out permits variable availability; new specification requires all six included venues valid."",""new_all_six_valid_minutes"":1024633,""new_lock_rate"":0.0615629105804158,""new_nonlock_rate"":0.2660623267459537,""new_over_half_share"":0.7772763516302911,""old_lock_rate"":0.0719154842689697,""old_nonlock_rate"":0.3016389001760802,""old_over_half_share"":0.7788850837138508,""old_valid_minutes"":1051200,""path"":""experiments_leave_one_exchange_out\\tables\\main_contrast_summary.csv""}","The new fixed-all-six result is reconciled with, but not equated to, the older variable-availability leave-one-out result."
+28_original_venue_source_paths_confirmed,PASS,"[{""exchange"":""Binance"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_Binance.csv""},{""exchange"":""Bitfinex"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_Bitfinex.csv""},{""exchange"":""BitMEX"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_BitMEX.csv""},{""exchange"":""Bitstamp"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_Bitstamp.csv""},{""exchange"":""Coinbase"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_Coinbase.csv""},{""exchange"":""KuCoin"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_KuCoin.csv""},{""exchange"":""OKX"",""raw_source_path"":""data/external/raw/btc/BTCUSD_1m_OKX.csv""}]",All seven original venue CSV paths were resolved before the verified minute inputs were used.
+29_original_valid_venue_count_shares_sum_to_one,PASS,"{""original_valid_minute_count_sum"":1050207,""share_sum_abs_error"":0.0}",The venue-count shares use original-pool numerators and exactly exhaust the Binance-anchored valid-minute pool.

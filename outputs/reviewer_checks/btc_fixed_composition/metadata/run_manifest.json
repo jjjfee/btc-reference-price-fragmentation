@@ -1,0 +1,18 @@
+{
+  "command": "\"python\" \"<PROJECT_ROOT>\\run_btc_fixed_composition_checks.py\" --project-root \"<PROJECT_ROOT>\" --start-date \"2021-01-01\" --end-date \"2022-12-31 23:59:00\" --out-dir \"<PROJECT_ROOT>\\paper_outputs_el\\reviewer_checks\\btc_fixed_composition\" --bootstrap-reps 5000 --seed 42",
+  "started_utc": "2026-07-15T03:32:09.094733+00:00",
+  "elapsed_seconds": 92.39578533172607,
+  "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pandas": "3.0.1",
+  "numpy": "2.3.5",
+  "seed": 42,
+  "bootstrap_reps": 5000,
+  "headline_gate": "PASS",
+  "validation_counts": {
+    "PASS": 29
+  },
+  "old_BTC_files_changed": [],
+  "old_ETH_files_changed": [],
+  "old_manuscript_files_changed": []
+}

@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-csv_path = Path(r"D:\cilck here\2代目\experiments_dvonly\dvon_injection_shift_samples.csv")
+csv_path = (Path(__file__).resolve().parents[2] / Path("experiments_dvonly/dvon_injection_shift_samples.csv"))
 df = pd.read_csv(csv_path)
 
 print("shape =", df.shape)

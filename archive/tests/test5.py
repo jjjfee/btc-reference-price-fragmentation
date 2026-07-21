@@ -14,8 +14,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 # ======= 你只需要改这里 =======
-INPUT_DIR = Path(r"D:\cilck here\btc交易所数据")   # 原始 OHLCV 文件目录（7个csv）
-OUT_DIR   = Path(r"D:\cilck here\2代目\contract_spot_probe")
+INPUT_DIR = (Path(__file__).resolve().parents[2] / "data" / "external" / "raw" / "btc")   # 原始 OHLCV 文件目录（7个csv）
+OUT_DIR   = (Path(__file__).resolve().parents[2] / Path(r"contract_spot_probe"))
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 PLOT_DIR  = OUT_DIR / "diagnostics_plots"
 PLOT_DIR.mkdir(parents=True, exist_ok=True)
