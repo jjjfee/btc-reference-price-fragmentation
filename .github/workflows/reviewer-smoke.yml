@@ -1,0 +1,35 @@
+name: Reviewer smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  reviewer-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install tested requirements
+        run: python -m pip install -r requirements.txt
+      - name: Compile Python sources
+        run: python -m compileall -q src scripts archive tests
+      - name: Validate committed manuscript evidence
+        run: python scripts/final/validate_selected_outputs.py
+      - name: Run synthetic smoke tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Check documented entry-point help
+        run: |
+          python scripts/final/validate_selected_outputs.py --help
+          python scripts/final/hash_external_inputs.py --help
+          python src/experiments/run_day_block_bootstrap.py --help
+          python src/audit/run_btc_fixed_composition_checks.py --help
+          python src/audit/run_leave_one_exchange_out_validation.py --help
+          python src/audit/run_price_displacement_audit.py --help
+          python src/experiments/run_btc_post2022_replication.py --help
+          python src/experiments/run_eth_replication.py --help
+          python src/experiments/run_eth_exclude_binance.py --help

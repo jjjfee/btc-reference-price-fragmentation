@@ -79,7 +79,7 @@ The raw BTCUSD and ETHUSD data must be downloaded directly from Kaggle. They are
 - [Comprehensive BTCUSD 1m Data](https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data)
 - [Ethereum ETH, 7 Exchanges, 1m Full Historical Data](https://www.kaggle.com/datasets/imranbukhari/comprehensive-ethusd-1m-data/data)
 
-Expected filenames, columns, sample dates, access dates, conventions, available hashes, and downstream generators are recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and `data/external/manifests/kaggle_ethusd_manifest.md`. Create the untracked raw-data directories described there after download.
+Expected filenames, columns, sample dates, access dates, conventions, available hashes, and downstream generators are recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and `data/external/manifests/kaggle_ethusd_manifest.md`. The raw hashes added there identify a retained local snapshot and are explicitly not historical-version proof. Create the untracked raw-data directories described there after download.
 
 ## Environment
 
@@ -91,6 +91,10 @@ python -m pip install -r requirements.txt
 ```
 
 Core numerical work uses NumPy and pandas; plotting and PDF output additionally use Matplotlib, Pillow, and ReportLab. Parquet input uses PyArrow.
+
+`requirements.txt` provides portable lower bounds. `environment-tested.txt` records the exact
+environment used for the July 2026 repository smoke checks; it is a tested snapshot, not a
+cross-platform lock.
 
 ## Recommended execution order
 
@@ -106,7 +110,7 @@ Exact commands, inputs, outputs, seeds, and troubleshooting are in `REPLICATION.
 
 ## Reproducibility scope and cost
 
-The exact-value validator and `--help` checks run directly from a clone and use only committed files. Figure/table summaries and reports are also provided. Raw-to-panel builds and event-level experiments depend on external files totaling multiple gigabytes and can require substantial memory, disk, and compute; they are not one-click lightweight tests. Large raw files, venue panels, merged event samples, and bootstrap draws are intentionally omitted and ignored. The repository preserves their source and run metadata instead.
+The exact-value validator, synthetic `unittest` smoke test, and `--help` checks run directly from a clone and use only committed files. Figure/table summaries and reports are also provided. Raw-to-panel builds and event-level experiments depend on external files totaling multiple gigabytes and can require substantial memory, disk, and compute; they are not one-click lightweight tests. Large raw files, venue panels, merged event samples, and bootstrap draws are intentionally omitted and ignored. The repository preserves their source and run metadata instead.
 
 ## Known limitations
 

@@ -46,6 +46,7 @@ tmp/
 data/external/raw/
 data/raw/
 raw/
+local_*_hashes.json
 
 # Large generated panels and event-level intermediates
 /dv_ready/
