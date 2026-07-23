@@ -16,6 +16,7 @@ import math
 import platform
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -40,15 +41,62 @@ EXPECTED_HEADLINE = {
 HEADLINE_TOLERANCE = 1e-10
 
 
-def parse_args() -> argparse.Namespace:
+class RepositoryPathError(RuntimeError):
+    """The repository checkout is internally incomplete or inconsistent."""
+
+
+class GeneratedInputMissingError(RuntimeError):
+    """A required generated input directory or file is unavailable."""
+
+
+class ExternalRawDataMissingError(RuntimeError):
+    """A required external raw-data directory or file is unavailable."""
+
+
+class UnexpectedVenueSetError(RuntimeError):
+    """Input files do not map one-to-one to the seven audited venues."""
+
+
+class MissingColumnError(RuntimeError):
+    """A generated input file does not contain the audited columns."""
+
+
+@dataclass(frozen=True)
+class ProjectPaths:
+    root: Path
+    source: Path
+    baseline_structure: Path
+    baseline_events: Path
+    input_dir: Path
+    raw_dir: Path
+    out_dir: Path
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=Path(__file__).resolve().parents[2])
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=None,
+        help="Seven generated DV-ready CSVs (default: <project-root>/dv_ready_2021_2022).",
+    )
+    parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        default=None,
+        help="Seven external BTC CSVs (default: <project-root>/data/external/raw/btc).",
+    )
     parser.add_argument("--start-date", default="2021-01-01")
     parser.add_argument("--end-date", default="2022-12-31 23:59:00")
     parser.add_argument(
         "--out-dir",
         type=Path,
-        default=(Path(__file__).resolve().parents[2] / "outputs" / "reviewer_checks" / "btc_fixed_composition"),
+        default=None,
+        help=(
+            "Output directory below <project-root>/outputs/reviewer_checks "
+            "(default: .../btc_fixed_composition)."
+        ),
     )
     parser.add_argument("--bootstrap-reps", type=int, default=5000)
     parser.add_argument(
@@ -62,7 +110,52 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Run the headline reproduction gate and stop before fixed-composition checks.",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
+
+
+def _resolve_from_root(root: Path, value: Path | None, default: Path) -> Path:
+    path = default if value is None else value
+    return (root / path).resolve() if not path.is_absolute() else path.resolve()
+
+
+def resolve_project_paths(args: argparse.Namespace) -> ProjectPaths:
+    root = Path(args.project_root).resolve()
+    return ProjectPaths(
+        root=root,
+        source=root / "src" / "experiments" / "run_dv_only_injection_experiments.py",
+        baseline_structure=root / "experiments" / "weight_concentration_minute_level.csv",
+        baseline_events=root / "experiments_dvonly" / "dvon_injection_shift_samples.csv",
+        input_dir=_resolve_from_root(root, args.input_dir, Path("dv_ready_2021_2022")),
+        raw_dir=_resolve_from_root(root, args.raw_dir, Path("data") / "external" / "raw" / "btc"),
+        out_dir=_resolve_from_root(
+            root,
+            args.out_dir,
+            Path("outputs") / "reviewer_checks" / "btc_fixed_composition",
+        ),
+    )
+
+
+def validate_repository_paths(paths: ProjectPaths) -> None:
+    if not paths.root.is_dir():
+        raise RepositoryPathError("Internal repository error: --project-root is not a directory.")
+    if not paths.source.is_file():
+        raise RepositoryPathError(
+            "Internal repository error: audited headline generator is missing: "
+            "src/experiments/run_dv_only_injection_experiments.py"
+        )
+
+
+def validate_headline_inputs(paths: ProjectPaths) -> None:
+    missing = []
+    if not paths.baseline_structure.is_file():
+        missing.append("experiments/weight_concentration_minute_level.csv")
+    if not paths.baseline_events.is_file():
+        missing.append("experiments_dvonly/dvon_injection_shift_samples.csv")
+    if missing:
+        raise GeneratedInputMissingError(
+            "Generated input missing: the headline gate also requires these excluded baseline "
+            f"artifacts under --project-root: {missing}."
+        )
 
 
 def utc_timestamp(value: str) -> pd.Timestamp:
@@ -158,27 +251,93 @@ def infer_exchange(path: Path) -> str:
     for exchange in EXCHANGES:
         if exchange.lower() in path.name.lower():
             return exchange
-    raise ValueError(f"Cannot infer exchange from {path.name}")
+    raise UnexpectedVenueSetError(f"Unexpected venue set: cannot infer a venue from {path.name}")
+
+
+def discover_dv_ready_files(input_dir: Path) -> dict[str, Path]:
+    if not input_dir.is_dir():
+        raise GeneratedInputMissingError(
+            "Generated input missing: --input-dir is not a directory. "
+            "Build or supply the seven DV-ready venue CSVs."
+        )
+    files = sorted(input_dir.glob("*.csv"))
+    if not files:
+        raise GeneratedInputMissingError(
+            "Generated input missing: no DV-ready CSVs were found in --input-dir."
+        )
+    mapped: dict[str, Path] = {}
+    for path in files:
+        exchange = infer_exchange(path)
+        if exchange in mapped:
+            raise UnexpectedVenueSetError(
+                f"Unexpected venue set: multiple DV-ready files map to {exchange}: "
+                f"{mapped[exchange].name}, {path.name}"
+            )
+        mapped[exchange] = path
+    missing = [exchange for exchange in EXCHANGES if exchange not in mapped]
+    unexpected_count = len(files) - len(EXCHANGES)
+    if missing or unexpected_count:
+        raise UnexpectedVenueSetError(
+            "Unexpected venue set in --input-dir: expected exactly "
+            f"{EXCHANGES}; found {sorted(mapped)} across {len(files)} CSVs; missing={missing}."
+        )
+    return mapped
+
+
+def discover_raw_files(raw_dir: Path) -> dict[str, Path]:
+    if not raw_dir.is_dir():
+        raise ExternalRawDataMissingError(
+            "External raw data missing: --raw-dir is not a directory. "
+            "Download the seven BTC venue CSVs described in the source-data manifest."
+        )
+    mapped = {exchange: raw_dir / f"BTCUSD_1m_{exchange}.csv" for exchange in EXCHANGES}
+    missing = [path.name for path in mapped.values() if not path.is_file()]
+    if missing:
+        raise ExternalRawDataMissingError(
+            "External raw data missing: expected seven explicitly named BTC venue files in "
+            f"--raw-dir; missing={missing}."
+        )
+    observed = sorted(raw_dir.glob("BTCUSD_1m_*.csv"))
+    observed_venues: list[str] = []
+    for path in observed:
+        observed_venues.append(infer_exchange(path))
+    if len(observed) != len(EXCHANGES) or sorted(observed_venues) != sorted(EXCHANGES):
+        raise UnexpectedVenueSetError(
+            "Unexpected venue set in --raw-dir: expected exactly the seven audited "
+            f"BTCUSD venue files; found {[path.name for path in observed]}."
+        )
+    return mapped
 
 
 def load_minute_inputs(
-    input_dir: Path, start: pd.Timestamp, end: pd.Timestamp
+    input_dir: Path, raw_dir: Path, start: pd.Timestamp, end: pd.Timestamp
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DatetimeIndex]:
-    files = sorted(input_dir.glob("*.csv"))
-    if len(files) != 7:
-        raise ValueError(f"Expected seven DV-ready CSVs in {input_dir}; found {len(files)}")
+    input_files = discover_dv_ready_files(input_dir)
+    raw_files = discover_raw_files(raw_dir)
     prices: dict[str, pd.Series] = {}
     weights: dict[str, pd.Series] = {}
     first_file_index: pd.DatetimeIndex | None = None
     manifest_rows: list[dict[str, Any]] = []
-    for path in files:
-        exchange = infer_exchange(path)
+    for exchange in EXCHANGES:
+        path = input_files[exchange]
         head = pd.read_csv(path, nrows=5)
         time_col = pick_existing_column(head.columns, TIME_COL_CANDIDATES)
         price_col = pick_existing_column(head.columns, PRICE_COL_CANDIDATES)
         weight_col = pick_existing_column(head.columns, WEIGHT_COL_CANDIDATES)
-        if not all([time_col, price_col, weight_col]):
-            raise ValueError(f"{path.name}: missing time/price/weight column")
+        missing_columns = []
+        if time_col is None:
+            missing_columns.append(f"timestamp (one of {TIME_COL_CANDIDATES})")
+        if price_col is None:
+            missing_columns.append(f"price (one of {PRICE_COL_CANDIDATES})")
+        if weight_col is None:
+            missing_columns.append(f"DV weight (one of {WEIGHT_COL_CANDIDATES})")
+        if "volume_unit_final" not in head.columns:
+            missing_columns.append("volume_unit_final")
+        if missing_columns:
+            raise MissingColumnError(
+                f"Missing required column(s) in {path.name}: {', '.join(missing_columns)}"
+            )
+        assert time_col is not None and price_col is not None and weight_col is not None
         frame = pd.read_csv(path, usecols=[time_col, price_col, weight_col])
         frame[time_col] = pd.to_datetime(frame[time_col], errors="coerce", utc=True).dt.floor("min")
         frame[price_col] = pd.to_numeric(frame[price_col], errors="coerce")
@@ -191,10 +350,12 @@ def load_minute_inputs(
             first_file_index = pd.DatetimeIndex(frame.index)
         prices[exchange] = frame[price_col]
         weights[exchange] = frame[weight_col]
-        unit = str(head["volume_unit_final"].dropna().iloc[0]) if "volume_unit_final" in head and head["volume_unit_final"].notna().any() else "unknown"
-        raw_path = input_dir.parent.parent / "btc交易所数据" / f"BTCUSD_1m_{exchange}.csv"
-        if not raw_path.is_file():
-            raise FileNotFoundError(f"Missing original venue input: {raw_path}")
+        unit = (
+            str(head["volume_unit_final"].dropna().iloc[0])
+            if head["volume_unit_final"].notna().any()
+            else "unknown"
+        )
+        raw_path = raw_files[exchange]
         manifest_rows.append(
             {
                 "exchange": exchange,
@@ -1551,8 +1712,10 @@ Add one compact main-text paragraph with the all-seven coverage, over-half share
 def main() -> int:
     args = parse_args()
     started = time.time()
-    root = args.project_root.resolve()
-    out_dir = args.out_dir.resolve()
+    paths = resolve_project_paths(args)
+    validate_repository_paths(paths)
+    root = paths.root
+    out_dir = paths.out_dir
     start = utc_timestamp(args.start_date)
     end = utc_timestamp(args.end_date)
     if end < start:
@@ -1561,15 +1724,13 @@ def main() -> int:
         raise ValueError("--bootstrap-reps must be at least 100")
     expected_parent = (root / "outputs" / "reviewer_checks").resolve()
     if expected_parent != out_dir and expected_parent not in out_dir.parents:
-        raise ValueError(f"--out-dir must remain under {expected_parent}")
-    metadata_dir = out_dir / "metadata"
-    data_dir = out_dir / "data_audit"
-    results_dir = out_dir / "results"
-    figures_dir = out_dir / "figures"
-    for directory in [metadata_dir, data_dir, results_dir, figures_dir]:
-        directory.mkdir(parents=True, exist_ok=True)
+        raise ValueError("--out-dir must remain under <project-root>/outputs/reviewer_checks")
+    # Validate all read-side paths before creating any output directory.
+    discover_dv_ready_files(paths.input_dir)
+    discover_raw_files(paths.raw_dir)
+    validate_headline_inputs(paths)
 
-    source = root / "run_dv_only_injection_experiments.py"
+    source = paths.source
     recovered_seed = int(literal_assignment(source, "RANDOM_SEED"))
     sample_target = int(literal_assignment(source, "N_SAMPLE_MINUTES"))
     min_exchanges = int(literal_assignment(source, "MIN_EXCHANGES_PER_MIN"))
@@ -1580,6 +1741,13 @@ def main() -> int:
         raise ValueError(f"Requested seed {seed} differs from recovered original event seed {recovered_seed}")
     if sample_target != 100_000 or min_exchanges != 3 or len(delta_ws) * len(shock_types) != 8:
         raise ValueError("Original headline constants no longer match the audited 100,000 x 8 design")
+
+    metadata_dir = out_dir / "metadata"
+    data_dir = out_dir / "data_audit"
+    results_dir = out_dir / "results"
+    figures_dir = out_dir / "figures"
+    for directory in [metadata_dir, data_dir, results_dir, figures_dir]:
+        directory.mkdir(parents=True, exist_ok=True)
 
     btc_protected_paths = [
         root / "agg_ready",
@@ -1602,7 +1770,7 @@ def main() -> int:
 
     print("[1/8] Loading and hashing seven verified minute-level input files...")
     prices_wide, weights_wide, input_manifest, first_file_index = load_minute_inputs(
-        root / "dv_ready_2021_2022", start, end
+        paths.input_dir, paths.raw_dir, start, end
     )
     input_manifest.to_csv(metadata_dir / "btc_input_file_manifest.csv", index=False, encoding="utf-8-sig")
     print("[2/8] Recomputing the baseline minute panel from venue inputs...")
@@ -2351,6 +2519,7 @@ def main() -> int:
     run_manifest = {
         "command": (
             f'"{sys.executable}" "{Path(__file__).resolve()}" --project-root "{root}" '
+            f'--input-dir "{paths.input_dir}" --raw-dir "{paths.raw_dir}" '
             f'--start-date "{args.start_date}" --end-date "{args.end_date}" --out-dir "{out_dir}" '
             f'--bootstrap-reps {args.bootstrap_reps} --seed {seed}'
         ),
@@ -2402,4 +2571,15 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        exit_code = main()
+    except (
+        RepositoryPathError,
+        GeneratedInputMissingError,
+        ExternalRawDataMissingError,
+        UnexpectedVenueSetError,
+        MissingColumnError,
+    ) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        exit_code = 2
+    raise SystemExit(exit_code)

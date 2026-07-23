@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Reviewer-check reproducibility repair
+
+- Corrected the fixed-composition checker’s audited source path and removed machine-specific raw-path inference.
+- Added explicit `--input-dir` and `--raw-dir` handling with differentiated path, venue, and column diagnostics.
+- Added a synthetic standard-library smoke test and a lightweight GitHub Actions workflow.
+- Documented no-data validation versus high-cost raw reconstruction and recorded the tested environment.
+- Added a local external-input hashing utility and clearly qualified current-snapshot BTC/ETH hashes.
+
 ## 0.3.0 - 2026-07-21
 
 ### Economics Letters submission replication update
