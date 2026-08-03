@@ -3,23 +3,22 @@
 - Audit date: 2026-07-21
 - Target repository: `jjjfee/btc-reference-price-fragmentation`
 - Remote base commit audited: `b37ddd7df039bdbc6b816818ed98907701e6255b`
-- Publication branch: `agent/el-replication-update`
-- Publication commit: reported in the pull request and publication handoff for the commit containing this report
+- Update commit: reported in the pull request and repository handoff for the commit containing this report
 
 ## Initial repository state
 
 The supplied local working directory was an experimental project directory, not a usable checkout: `git status`, `git branch`, `git log`, and `git remote -v` all failed because the local `.git` directory was incomplete. Two read-only clone attempts failed because the GitHub network connection was unavailable/reset. The remote repository was therefore audited at the exact base commit above through the authenticated GitHub integration, while a separate controlled staging tree was created locally. No `git add -A` was run in the experimental directory.
 
-The remote `main` branch was public and writable. Its latest ten-commit request yielded eight available commits, with `b37ddd7` as the head. The README described the earlier FRL-era A–G workflow; `REPRODUCING.md` instructed users to edit a personal Windows path; the title metadata was current but the submission status and H–L support were absent. A source scan found machine-specific paths in 34 of 36 remotely enumerated Python files.
+The remote `main` branch was public and writable. Its latest ten-commit request yielded eight available commits, with `b37ddd7` as the head. The README described the earlier A–G workflow; `REPRODUCING.md` instructed users to edit a personal Windows path; the title metadata was current but the paper-scope statement and H–L support were absent. A source scan found machine-specific paths in 34 of 36 remotely enumerated Python files.
 
 ## Claim-to-evidence audit
 
-| Manuscript claim or appendix item | Supporting script | Supporting output | Pre-update status | Current destination/status |
+| Paper claim or appendix item | Supporting script | Supporting output | Pre-update status | Current destination/status |
 |---|---|---|---|---|
 | Seven-venue 2021–2022 BTC sample; 1,050,207 valid minutes; 55.4973% over half; max spell 2,982 | `src/audit/run_btc_fixed_composition_checks.py` | availability/composition comparison CSV | Local only / missing from public map | Present under `outputs/reviewer_checks/btc_fixed_composition/results/` |
 | 1,008,835 all-seven minutes; 54.5047%; max spell 787 | same | fixed-composition summary CSV | Missing | Present |
 | Pooled 100,000-minute, seed-42, 800,000-event construction | `src/experiments/run_dv_only_injection_experiments.py` | headline CSV and event-formula/sampling manifests | Script present but documentation stale | Present and documented in Appendix L map |
-| Exact pooled rates, difference, and ratio | baseline generator and lock-in audit | `outputs/main_text/tables/headline_pivot_change_rates.csv` | Present but FRL-framed | Present and exact-value validated |
+| Exact pooled rates, difference, and ratio | baseline generator and lock-in audit | `outputs/main_text/tables/headline_pivot_change_rates.csv` | Present but scoped to the earlier repository framing | Present and exact-value validated |
 | All-seven pivot rates and difference | fixed-composition runner | fixed-composition pivot summary | Missing | Present |
 | All-seven one-day and seven-day intervals | fixed-composition runner | fixed-composition bootstrap CSV | Missing | Present |
 | Six base-volume/exclude-BitMEX check | fixed-composition runner | basevolume6 summaries | Missing | Present |
@@ -70,13 +69,13 @@ Individual raw BTC and ETH venue CSVs are hundreds of megabytes and remain at th
 ## Checks run and passed
 
 - `python -m compileall -q src scripts archive`: PASS.
-- `python scripts/final/validate_selected_outputs.py`: PASS; 43 mapped artifacts exist, exact manuscript-facing values match, and 186 text files were scanned.
+- `python scripts/final/validate_selected_outputs.py`: PASS; 43 mapped artifacts exist, exact paper-facing values match, and 186 text files were scanned.
 - Requirements install followed by `python -m pip check`: PASS; no broken requirements.
 - `--help` smoke checks for the final validator, block bootstrap, reviewer runner, leave-one-out runner, price-displacement runner, later-BTC runner, matched-ETH runner, targeted-ETH runner, and two argument-driven plotting generators: PASS.
 - Absolute-path scan over tracked text: PASS. Current scripts, current output metadata, and user-facing instructions contain no personal drive-root, user-home, desktop, or downloads path. Fifteen pre-existing source manifests and run-info/provenance records retain their historical project paths deliberately as audit records; the validator permits only those exact files.
 - Sensitive-string scan for tokens, passwords, API keys, private keys, local usernames, and private URLs: PASS after reviewing non-secret documentation terms and generated audit labels.
 - Large-file scan: PASS; no file above 50 MB in the staged tree.
-- PDF audit performed against the local authoritative manuscript and online appendix: 12 and 15 pages respectively; Appendix headings A–L and the manuscript-facing numerical claims were extracted and visually spot-checked. The PDFs themselves are not required replication outputs and were not added.
+- PDF audit performed against the local authoritative paper and online appendix: 12 and 15 pages respectively; Appendix headings A–L and the paper-facing numerical claims were extracted and visually spot-checked. The PDFs themselves are not required replication outputs and were not added.
 
 ## Remaining limitations
 
@@ -84,8 +83,8 @@ Individual raw BTC and ETH venue CSVs are hundreds of megabytes and remain at th
 - Appendix B's baseline bootstrap uses seed 20260710, while the Appendix L fixed-composition rerun uses seed 42; both saved runs are retained and labeled.
 - Related VWAP q95 summaries use construction-specific definitions; their labels and provenance must be consulted before comparison.
 - The raw data source must remain available, and users need substantial local disk and memory for full reconstruction.
-- Direct `git fetch` attempts were blocked/reset by the environment's GitHub network path. The exact remote base and review-branch SHA were independently confirmed through the authenticated GitHub integration, and the identical base commit was reconstructed and SHA-verified from the immediately preceding local clone plus GitHub's one-file diff. Publication itself uses one normal `git push` and a reviewable branch/PR.
+- Direct `git fetch` attempts were blocked/reset by the environment's GitHub network path. The exact remote base and review-branch SHA were independently confirmed through the authenticated GitHub integration, and the identical base commit was reconstructed and SHA-verified from the immediately preceding local clone plus GitHub's one-file diff. The repository update itself uses one normal `git push` and a reviewable branch/PR.
 
-## Publication record
+## Repository update record
 
-The exact final branch commit is recorded by Git and reported in the pull request and publication handoff. It cannot be embedded in the same one-commit update without changing its own SHA. The update is intentionally proposed through a draft pull request because it is broad, adds new Appendix H–L evidence, and changes public replication documentation.
+The exact final branch commit is recorded by Git and reported in the pull request and repository handoff. It cannot be embedded in the same one-commit update without changing its own SHA. The update is intentionally proposed through a draft pull request because it is broad, adds new Appendix H–L evidence, and changes public replication documentation.

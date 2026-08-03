@@ -41,4 +41,4 @@ These files are not included in the GitHub repository because they are large int
 Currently stored locally.
 
 ## Notes
-This is the most relevant exchange-level input layer for reproducing the paper sample used in the submitted manuscript.
+This is the most relevant exchange-level input layer for reproducing the paper sample.

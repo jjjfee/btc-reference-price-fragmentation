@@ -46,7 +46,7 @@
 31. ETH 复现可信度风险：WARN=3, FAIL=0; 主要风险为原始 symbol 缺失和 BitMEX contract 口径.
 32. 已运行针对性排除；结果见 eth_targeted_exclusion_summary.csv.
 33. 建议作为 online appendix 的跨资产复现结果，主文可用一句话概括.
-34. 若 validation 无 FAIL，可用于投稿版本的附录；主文是否纳入取决于篇幅和 EL 叙事重点.
+34. 若 validation 无 FAIL，可作为论文附录材料；是否纳入主文取决于篇幅和论文叙事重点.
 
 ## Figure and pooled event definitions
 - Figure specification: `shock_type=inflate_only`, `gamma=1.0`, original 30 max_share bins, Wilson intervals, 0.5 vertical boundary.

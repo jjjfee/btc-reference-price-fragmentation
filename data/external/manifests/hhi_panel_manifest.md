@@ -30,7 +30,7 @@ Typical panel-level fields include:
 - make_panel_excl_exchange_from_dv.py
 
 ## Used in paper
-These files support the concentration-state analysis described in the main paper and appendix. In the current manuscript, concentration is linked to LWMP pivot behavior, VWAP proximity to the dominant exchange, threshold robustness, year-based subsamples, and Binance-exclusion checks. 
+These files support the concentration-state analysis described in the main paper and appendix. In the paper, concentration is linked to LWMP pivot behavior, VWAP proximity to the dominant exchange, threshold robustness, year-based subsamples, and Binance-exclusion checks.
 
 ## File status
 The large minute-level panel files are not included in the GitHub repository because of file-size constraints. Summary outputs and small metadata files are retained elsewhere in the repository.

@@ -7,10 +7,12 @@ authors:
     given-names: "Junjie"
 repository-code: "https://github.com/jjjfee/btc-reference-price-fragmentation"
 abstract: >
-  Code, selected outputs, validation reports, and source-data manifests for a
-  benchmark-mapping analysis of VWAP and LWMP in fragmented BTCUSD markets.
-  The accompanying Economics Letters manuscript is submitted and is not
-  represented here as accepted or published.
+  Code, selected outputs, validation reports, and source-data manifests for the
+  paper “When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence
+  from Fragmented BTCUSD Markets.” The study examines effective concentration
+  in fragmented cryptocurrency benchmarks by comparing VWAP with a
+  Liquidity-Weighted Median Price (LWMP) computed from synchronized
+  dollar-volume proxy weights under the lower weighted-median convention.
 keywords:
   - BTCUSD
   - benchmark design
@@ -18,6 +20,7 @@ keywords:
   - fragmented markets
   - VWAP
   - LWMP
+  - liquidity-weighted median
   - weighted median
   - reference price
 license: "MIT"
