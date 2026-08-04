@@ -1,12 +1,12 @@
 # Output manifest
 
-This manifest maps the current submitted manuscript and online Appendix A–L to the committed code and selected artifacts. Raw files, processed venue panels, and event-level samples are external by design. The machine-readable equivalent is `outputs/metadata/output_manifest.json`.
+This manifest maps the paper and online Appendix A–L to the committed code and selected artifacts. Raw files, processed venue panels, and event-level samples are external by design. The machine-readable equivalent is `outputs/metadata/output_manifest.json`.
 
 ## Main text
 
-| Manuscript object | Generator or audit | Principal input | Committed artifact |
+| Paper object | Generator or audit | Principal input | Committed artifact |
 |---|---|---|---|
-| Figure 1: LWMP one-half boundary | `src/experiments/run_dv_only_injection_experiments.py`; `src/plotting/plot_lwmp_boundary_single_gamma_maintext.py` | external processed BTC venue panel and DV-only events | `outputs/main_text/figures/Fig_LWMP_boundary_single_gamma1_inflate_only.png` |
+| Figure 1: Liquidity-Weighted Median Price (LWMP) one-half boundary | `src/experiments/run_dv_only_injection_experiments.py`; `src/plotting/plot_lwmp_boundary_single_gamma_maintext.py` | external processed BTC venue panel and DV-only events | `outputs/main_text/figures/Fig_LWMP_boundary_single_gamma1_inflate_only.png` |
 | Figure 2: observed VWAP proximity | `src/plotting/plot_vwap_head_proximity_vs_maxshare.py` | external synchronized BTC price/weight panel | `outputs/main_text/figures/Fig_vwap_head_proximity_q95_by_maxshare.png` |
 | Table 1: persistence of the over-half state | `src/audit/rebuild_observed_lockin_persistence.py` | external BTC concentration panel | `outputs/main_text/tables/table_lockin_persistence_main_rebuilt.csv` and `.xlsx` |
 | Headline pivot-change rates | `src/experiments/run_dv_only_injection_experiments.py`; `src/audit/audit_lockin_and_build_dvonly_inference.py` | external 800,000-row DV-only event sample | `outputs/main_text/tables/headline_pivot_change_rates.csv` |

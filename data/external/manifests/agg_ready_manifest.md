@@ -25,7 +25,7 @@ Typical fields include:
 - build_aggregated_prices.py
 
 ## Used in paper
-These files provide the benchmark-price objects used in the main analysis. The current manuscript studies how VWAP and LWMP respond differently to concentration under the DV-only design, making this aggregation layer central to both the main results and the appendix evidence. 
+These files provide the benchmark-price objects used in the main analysis. The paper studies how VWAP and LWMP respond differently to concentration under the DV-only design, making this aggregation layer central to both the main results and the appendix evidence.
 
 ## File status
 The main aggregated price file is not included in the GitHub repository because it is a large intermediate data object. Small reports may be retained elsewhere in the repository.

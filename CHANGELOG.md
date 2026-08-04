@@ -12,9 +12,9 @@
 
 ## 0.3.0 - 2026-07-21
 
-### Economics Letters submission replication update
+### Paper replication update
 
-- Reconciled repository claims with the current submitted manuscript and online Appendix A–L.
+- Reconciled repository claims with the paper and online Appendix A–L.
 - Added selected later-BTCUSD, matched-ETHUSD, targeted ETH exclusion, and leave-one-exchange-out validation materials.
 - Added all-seven-valid and six-base-volume/exclude-BitMEX fixed-composition checks.
 - Added one-day and seven-day block-bootstrap summaries and fixed-weight dominant-price displacement materials.

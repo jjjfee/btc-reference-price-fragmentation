@@ -1,7 +1,6 @@
 {
   "schema_version": 1,
   "paper_title": "When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets",
-  "submission_status": "submitted manuscript; not accepted or published",
   "main_text_artifacts": [
     "outputs/main_text/figures/Fig_LWMP_boundary_single_gamma1_inflate_only.png",
     "outputs/main_text/figures/Fig_vwap_head_proximity_q95_by_maxshare.png",

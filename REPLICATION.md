@@ -2,6 +2,15 @@
 
 This guide separates lightweight verification of committed evidence from computationally expensive reconstruction using externally downloaded data.
 
+## Terminology
+
+Liquidity-weighted describes the intended economic meaning of the benchmark weights: they are
+intended to represent relative venue liquidity. The empirical implementation uses synchronized
+dollar-volume proxy weights rather than treating dollar volume as a complete or error-free
+liquidity measure. Liquidity-Weighted Median Price (LWMP) is the formal method name. The lower
+weighted-median convention is the mathematical boundary rule: after venue prices are ordered, the
+operator selects the first price at which cumulative weight reaches one half.
+
 ## 1. Environment
 
 Use Python 3.10+ from the repository root:
@@ -58,7 +67,7 @@ credentials or Kaggle tokens in the repository. `--raw-dir` identifies downloade
 reviewer-check evidence. These roles are not interchangeable.
 
 To record hashes for files you downloaded, without claiming that they are identical to a historical
-manuscript download:
+paper input snapshot:
 
 ```bash
 python scripts/final/hash_external_inputs.py --raw-dir data/external/raw/btc --output local_btc_hashes.json
@@ -184,7 +193,7 @@ python -m compileall -q src scripts archive tests
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-The validator checks committed manifest paths, exact manuscript-facing values, the saved 29-check
+The validator checks committed manifest paths, exact paper-facing values, the saved 29-check
 gate, and personal absolute-path hygiene. The unittest suite constructs tiny synthetic venue files
 in a temporary directory and checks path resolution, input loading, panel calculations, and a small
 event construction. Neither command downloads Kaggle data or claims to reconstruct the full raw
@@ -193,7 +202,7 @@ analysis. The same no-data checks and documented `--help` commands run in
 
 This lightweight route validates the committed evidence package. Raw-to-final reconstruction is a
 separate, high-I/O/high-memory workflow consisting of Stages A onward. The repository intentionally
-does not imply that a clean clone can reconstruct all manuscript outputs without obtaining external
+does not imply that a clean clone can reconstruct all paper outputs without obtaining external
 data and regenerating excluded intermediates.
 
 ## 6. Expected committed evidence

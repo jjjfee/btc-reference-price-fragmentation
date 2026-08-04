@@ -1,13 +1,16 @@
 # When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets
 
-This repository contains code, selected outputs, data-source manifests, and validation reports for the current Economics Letters submission. The manuscript is submitted; it is not described here as accepted or published.
+This repository contains code, selected outputs, data-source manifests, and validation reports for the paper “When Multi-Venue Benchmarks Become Effectively Concentrated: Evidence from Fragmented BTCUSD Markets.”
 
 ## Research question and contribution
 
 The paper asks when a formally multi-venue price benchmark becomes effectively concentrated because trading weight is concentrated. It is a benchmark-mapping exercise: synchronized public price-volume observations are mapped through two aggregation rules, not proposed as a regulated or investable index.
 
-- A volume-weighted average price (VWAP) has continuous exposure to every venue price. Holding weights fixed, the dominant venue's pass-through is its weight.
-- A liquidity-weighted median price (LWMP) has a threshold-pivot mechanism. Once one valid venue has more than half of synchronized weight, that venue must be the weighted-median pivot; small weight perturbations may therefore leave the pivot unchanged.
+A volume-weighted average price (VWAP) has continuous exposure to venue prices. Holding weights fixed, the dominant venue’s price pass-through equals its normalized weight.
+
+A Liquidity-Weighted Median Price (LWMP) aggregates venue-level prices using weights intended to represent relative venue liquidity. In the empirical implementation, synchronized dollar volume is used as a proxy for relative venue liquidity. The LWMP is computed using the lower weighted-median convention: after ordering venue prices, it selects the first price at which cumulative weight reaches one half.
+
+Once one valid venue carries more than half of total synchronized weight, that venue must be the weighted-median pivot. Under fixed weights, a price displacement at that venue therefore receives unit pass-through under LWMP.
 
 ## Main BTCUSD sample
 
@@ -21,7 +24,7 @@ The baseline panel contains one-minute UTC observations for Binance, Bitfinex, B
 | Over-half share, all-seven-valid sample | 54.5047% |
 | Longest pooled over-half spell | 2,982 minutes |
 
-The weights are synchronized price-volume proxy shares. Venue source conventions differ. Base-volume venues use venue price times volume; BitMEX is retained under the audited quote-or-contract dollar-volume convention. The handling is recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and the committed reviewer-check input manifest.
+The empirical weights are synchronized dollar-volume-based proxies for relative venue liquidity, not error-free measurements of liquidity. Venue source conventions differ. Base-volume venues use venue price times volume; BitMEX is retained under the audited quote-or-contract dollar-volume convention. The handling is recorded in `data/external/manifests/kaggle_btcusd_manifest.md` and the committed reviewer-check input manifest.
 
 ## Pooled DV-only design and headline result
 
@@ -115,11 +118,11 @@ The exact-value validator, synthetic `unittest` smoke test, and `--help` checks 
 ## Known limitations
 
 - Public OHLCV product and volume conventions are heterogeneous; results should be interpreted as a harmonized benchmark-mapping exercise.
-- The submitted manuscript reports rounded values; committed CSVs retain available precision.
+- The paper reports rounded values; committed CSVs retain available precision.
 - Appendix B's baseline block-bootstrap run and Appendix L's fixed-composition rerun use different documented seeds. Their close but non-identical intervals should not be treated as the same run.
 - Saved VWAP tail summaries arise from related but not identical constructions; labels and manifests identify the relevant construction.
 - Full reproduction requires third-party data availability and adequate local resources.
 
 ## License and citation
 
-Code and repository materials are released under the MIT License in `LICENSE`. Citation metadata are in `CITATION.cff`. No DOI or journal-publication claim is made.
+Code and repository materials are released under the MIT License in `LICENSE`. Citation metadata are in `CITATION.cff`.

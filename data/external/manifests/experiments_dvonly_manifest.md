@@ -47,7 +47,7 @@ Typical DV-only experimental fields include:
 - related plotting scripts in `src/plotting/`
 
 ## Used in paper
-This folder underlies the paper’s central identification strategy and most of the appendix evidence. The current manuscript explicitly frames the DV-only design as a diagnostic counterfactual that isolates the reweighting channel rather than the full joint movement of prices and shares. It supports the main LWMP and VWAP contrast as well as the robustness and audit appendices. 
+This folder underlies the paper’s central identification strategy and most of the appendix evidence. The paper frames the DV-only design as a diagnostic counterfactual that isolates the reweighting channel rather than the full joint movement of prices and shares. It supports the main LWMP and VWAP contrast as well as the robustness and audit appendices.
 
 ## File status
 Large DV-only sample files and audit datasets are not included in the GitHub repository because of file-size constraints. Summary figures, summary tables, and selected metadata are represented elsewhere in the public repository.

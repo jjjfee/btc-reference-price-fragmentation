@@ -4,7 +4,7 @@
 
 - Dataset: Comprehensive BTCUSD 1m Data
 - URL: https://www.kaggle.com/datasets/imranbukhari/comprehensive-btcusd-1m-data
-- Access date used in the manuscript: 16 May 2026
+- Access date used for the paper: 16 May 2026
 - Reported license: CC BY-SA 4.0
 - Target frequency and window: one minute, UTC, 2021-01-01 through 2022-12-31 for the baseline; later observations are used by Appendix I.
 - Redistribution: raw files are not included in this repository.
@@ -35,8 +35,8 @@ The complete saved file-size, row-count, schema, and convention record is `outpu
 
 On 23 July 2026, the seven raw BTC CSVs still retained in the analysis workspace were hashed with
 `scripts/final/hash_external_inputs.py`. These values identify those files as they existed on that
-date. Because raw hashes were not captured at the original manuscript access/run date, they do
-**not** prove that a later download, a Kaggle dataset version, or the historical manuscript input is
+date. Because raw hashes were not captured at the original paper access/run date, they do
+**not** prove that a later download, a Kaggle dataset version, or the historical paper input is
 byte-identical.
 
 No Kaggle version identifier was retained with these local files, so none is inferred.

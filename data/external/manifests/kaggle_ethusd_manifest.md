@@ -4,7 +4,7 @@
 
 - Dataset: Ethereum ETH, 7 Exchanges, 1m Full Historical Data
 - URL: https://www.kaggle.com/datasets/imranbukhari/comprehensive-ethusd-1m-data/data
-- Access date used in the manuscript: 13 July 2026
+- Access date used for the paper: 13 July 2026
 - Reported dataset license: CC BY-SA 4.0
 - Target frequency and window: one minute, UTC, 2021-01-01 through 2022-12-31
 - Redistribution: raw files are not included in this repository.
@@ -25,7 +25,7 @@ On 23 July 2026, the eight raw ETH CSVs still retained in the analysis workspace
 `scripts/final/hash_external_inputs.py`. The eighth file is the audit-only Combined Index described
 above. These values identify the files present on that date; because hashes were not captured at the
 original access/run date, they do **not** establish byte identity with a historical Kaggle version or
-the manuscript input.
+the paper input.
 
 No Kaggle version identifier was retained with these local files, so none is inferred.
 
